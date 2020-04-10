@@ -12,13 +12,13 @@ However, the pandemic has forced local governments to move much business online.
 
 Conceived and managed by local non-profit news outlet [The Beacon](https://www.thebeacon.media/), the Local Government Reporter fits seamlessly into this new normal. Local reporters, news outlets, and the public would benefit from this easier access to local government workings, during this crisis and after some normalcy returns.
 
-# Key features
+### Key features
 This online dashboard will be a user-friendly aggregate of council and committee meeting notes, including agendas, minutes, and any available video archive.
 
-# Stakeholders
+### Stakeholders
 The Beacon has convened a multi-outlet collaborative journalism approach that includes Shawnee Mission Post, Startland, the Jackson County Advocate, Northeast News, the Kansas Press Association, The Kansas City Star, KCUR 89.3, and the KLC Journal, and welcomes participation from other media outlets serving the KC metro area.
 
-# Roadmap
+### Roadmap
 [Check out the initial project canvas here.](https://docs.google.com/document/d/1EJKidlZmSO6dhICjB3UyAQtxAd9aRnMb0pMt0T0sNlc/edit)
 
 * Bree Walter and Jason Lopez our working on an initial UX interviews with reporters from The Beacon, The Star, KCUR, and Shawnee Mission Post.
@@ -26,7 +26,7 @@ The Beacon has convened a multi-outlet collaborative journalism approach that in
 * Kelsey Ryan with The Beacon is working with the J School at Mizzou to identify student interns to start reviewing local government websites, collecting links to council meetings, and documenting what formats are used to collect, share, and categorize.
 * **Need:** Biggest need right now (4/10/20) is for technical support to provide the vision and execution once we have a wireframe and collection of web addresses where content is located. Email [codeforkc@kcdigitaldrive.org](mailto:codeforkc@kcdigitaldrive.org) if you'd like to get involved.
 
-# Get involved
+### Get involved
 * Join us at our [Monday hack night](https://www.meetup.com/KCBrigade/)
 * [Join the Slack channel](slack://channel?team=codeforkc&id=local-govt-reporter)
 * Email [codeforkc@kcdigitaldrive.org](mailto:codeforkc@kcdigitaldrive.org) for more info
