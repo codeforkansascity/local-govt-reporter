@@ -30,3 +30,4 @@ The Beacon has convened a multi-outlet collaborative journalism approach that in
 * Join us at our [Monday hack night](https://www.meetup.com/KCBrigade/)
 * [Join the Slack channel](slack://channel?team=codeforkc&id=local-govt-reporter)
 * Email [codeforkc@kcdigitaldrive.org](mailto:codeforkc@kcdigitaldrive.org) for more info
+* Share the [Project Card](https://docs.google.com/presentation/d/1xoNC4boeimQNMlvcvfHEtkxdNKPJy_y1PSbiDnA6rqU/edit?usp=sharing) with developers, designers, or others who may be interested to get involved
