@@ -1,5 +1,7 @@
 # local-govt-reporter
-A web-based resource for local journalists to collect and share links to local governments’ day-to-day proceedings. 
+A web-based resource for local journalists to collect and share links to local governments’ day-to-day proceedings.
+
+[See the Project home page here.](https://www.kcdigitaldrive.org/project/local-govt-reporter/)
 
 ## Supporting the news you need, even when you don’t know you need it
 The Covid-19 pandemic is exacerbating a silent problem Kansas City was already facing. The regular, daily business of local government is crucial to the lives of the public. But covering this day-to-day activity is challenging for news organizations. The KC metro area hosts 119 city governments. City business meetings are often public, but there are not enough reporters to cover all that is happening at all times. Much of these goings on are not notable enough to be “newsworthy,” so the public does not demand this kind of coverage.
@@ -22,4 +24,9 @@ The Beacon has convened a multi-outlet collaborative journalism approach that in
 * Bree Walter and Jason Lopez our working on an initial UX interviews with reporters from The Beacon, The Star, KCUR, and Shawnee Mission Post.
 * Target date of April 22 for initial wireframes.
 * Kelsey Ryan with The Beacon is working with the J School at Mizzou to identify student interns to start reviewing local government websites, collecting links to council meetings, and documenting what formats are used to collect, share, and categorize.
-* **Need:** Biggest need right now (4/10/20) is for technical support to provide the vision and execution once we have a wireframe and collection of web addresses where content is located. Email codeforkc@kcdigitaldrive.org if you'd like to get involved.
+* **Need:** Biggest need right now (4/10/20) is for technical support to provide the vision and execution once we have a wireframe and collection of web addresses where content is located. Email [codeforkc@kcdigitaldrive.org](mailto:codeforkc@kcdigitaldrive.org) if you'd like to get involved.
+
+# Get involved
+* Join us at our [Monday hack night](https://www.meetup.com/KCBrigade/)
+* [Join the Slack channel](slack://channel?team=codeforkc&id=local-govt-reporter)
+* Email [codeforkc@kcdigitaldrive.org](mailto:codeforkc@kcdigitaldrive.org) for more info
