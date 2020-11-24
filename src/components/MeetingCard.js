@@ -2,16 +2,60 @@ import React from "react";
 
 const MeetingCard = () => {
   return (
-    <article class="slds-card">
+    <article class="slds-card" style={{ height: "300px", width: "578px" }}>
       <header class="slds-card__header">
-        <h2 class="slds-card__header-title">Card Header</h2>
+        <h2
+          class="slds-card__header-title"
+          style={{
+            fontSize: "24px",
+            paddingTop: "10px",
+            paddingLeft: "15px",
+            fontFamily: "TimesNewRoman",
+            fontWeight: "bold",
+          }}
+        >
+          Kansas City, MO
+        </h2>
       </header>
       <div class="slds-card__body slds-card__body_inner">
-        <div style={{ display: "inline-block" }}>This is in one div</div>
-        <div style={{ display: "inline-block" }}>This is in the second div</div>
+        <div
+          style={{
+            width: "50%",
+            float: "left",
+            textAlign: "left",
+            paddingTop: "20px",
+            paddingLeft: "15px",
+          }}
+        >
+          <p style={{ fontSize: "10pt", paddingBottom: "5px" }}>Last Meeting</p>
+          <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Date Time</p>
+          <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Location</p>
+          <p
+            style={{ fontSize: "10pt", fontStyle: "italic", paddingTop: "5px" }}
+          >
+            Available Items
+          </p>
+        </div>
+        <div
+          style={{
+            width: "50%",
+            float: "right",
+            textAlign: "left",
+            paddingTop: "20px",
+          }}
+        >
+          <p style={{ fontSize: "10pt", paddingBottom: "5px" }}>Next Meeting</p>
+          <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Date Time</p>
+          <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Location</p>
+          <p
+            style={{ fontSize: "10pt", fontStyle: "italic", paddingTop: "5px" }}
+          >
+            Available Items
+          </p>
+        </div>
       </div>
       <footer class="slds-card__footer">
-        <a class="slds-button slds-button_brand" href="javascript:void(0);">
+        <a class="slds-button slds-button_brand " href="javascript:void(0);">
           View All Info For KCMO
         </a>
       </footer>
