@@ -18,6 +18,7 @@ const MeetingCard = () => {
         </h2>
       </header>
       <div class="slds-card__body slds-card__body_inner">
+        {/*Left Body Div*/}
         <div
           style={{
             width: "50%",
@@ -31,11 +32,12 @@ const MeetingCard = () => {
           <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Date Time</p>
           <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Location</p>
           <p
-            style={{ fontSize: "10pt", fontStyle: "italic", paddingTop: "5px" }}
+            style={{ fontSize: "12pt", fontStyle: "italic", paddingTop: "5px" }}
           >
             Available Items
           </p>
         </div>
+        {/*Right Body Div*/}
         <div
           style={{
             width: "50%",
@@ -48,14 +50,24 @@ const MeetingCard = () => {
           <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Date Time</p>
           <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Location</p>
           <p
-            style={{ fontSize: "10pt", fontStyle: "italic", paddingTop: "5px" }}
+            style={{ fontSize: "12pt", fontStyle: "italic", paddingTop: "5px" }}
           >
             Available Items
           </p>
         </div>
       </div>
       <footer class="slds-card__footer">
-        <a class="slds-button slds-button_brand " href="javascript:void(0);">
+        <a
+          class="slds-button slds-button_brand "
+          href="javascript:void(0);"
+          style={{
+            position: "absolute",
+            bottom: "15px",
+            left: "15px",
+            margin: "15px",
+            fontSize: "12pt",
+          }}
+        >
           View All Info For KCMO
         </a>
       </footer>
