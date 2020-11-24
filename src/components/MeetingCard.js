@@ -10,7 +10,11 @@ const MeetingCard = () => {
         <div style={{ display: "inline-block" }}>This is in one div</div>
         <div style={{ display: "inline-block" }}>This is in the second div</div>
       </div>
-      <footer class="slds-card__footer">View All Info Button</footer>
+      <footer class="slds-card__footer">
+        <a class="slds-button slds-button_brand" href="javascript:void(0);">
+          View All Info For KCMO
+        </a>
+      </footer>
     </article>
   );
 };
