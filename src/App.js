@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import MeetingCard from "./components/MeetingCard";
+import CardFilter from "./components/CardFilter";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <MeetingCard />
+      <CardFilter />
     </div>
   );
 }

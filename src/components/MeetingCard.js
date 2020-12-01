@@ -2,7 +2,10 @@ import React from "react";
 
 const MeetingCard = () => {
   return (
-    <article class="slds-card" style={{ height: "300px", width: "578px" }}>
+    <article
+      class="slds-card"
+      style={{ height: "300px", width: "578px", float: "left", margin: "20px" }}
+    >
       <header class="slds-card__header">
         <h2
           class="slds-card__header-title"
