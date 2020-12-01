@@ -6,7 +6,15 @@ import Button from "@salesforce/design-system-react/components/button";
 const CardFilter = () => {
   return (
     <div style={{ width: "1236px", marginLeft: "auto", marginRight: "auto" }}>
-      <article class="slds-card" style={{ margin: "20px" }}>
+      <article
+        class="slds-card"
+        style={{
+          margin: "20px",
+          float: "left",
+          width: "814px",
+          height: "256px",
+        }}
+      >
         <header class="slds-card__header">
           <h1>Find local meetings and meeting minutes</h1>
         </header>
@@ -18,25 +26,28 @@ const CardFilter = () => {
             consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat
             volutpat. Donec placerat nisl magna, et faucibus.
           </p>
+          <footer>
+            <Button
+              class="slds-button slds-button_brand "
+              href="javascript:void(0);"
+              variant="outline-brand"
+              style={{
+                position: "absolute",
+                bottom: "15px",
+                left: "15px",
+                margin: "15px",
+                fontSize: "12pt",
+              }}
+            >
+              Need more help?
+            </Button>
+          </footer>
         </div>
-        <footer class="slds-card__footer">
-          <Button
-            class="slds-button slds-button_brand "
-            href="javascript:void(0);"
-            variant="outline-brand"
-            style={{
-              position: "absolute",
-              bottom: "15px",
-              left: "15px",
-              margin: "15px",
-              fontSize: "12pt",
-            }}
-          >
-            Need more help?
-          </Button>
-        </footer>
       </article>
-      <article class="slds-card" style={{ margin: "20px" }}>
+      <article
+        class="slds-card"
+        style={{ margin: "20px", float: "left", width: "814px" }}
+      >
         Sort Meetings By
       </article>
       <MeetingCard />
