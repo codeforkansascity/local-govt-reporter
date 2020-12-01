@@ -10,7 +10,7 @@ const MeetingCard = () => {
             fontSize: "24px",
             paddingTop: "10px",
             paddingLeft: "15px",
-            fontFamily: "TimesNewRoman",
+            fontFamily: "Merriweather",
             fontWeight: "bold",
           }}
         >
