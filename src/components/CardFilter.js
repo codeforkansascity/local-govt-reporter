@@ -1,6 +1,7 @@
 import React from "react";
 import MeetingCard from "./MeetingCard";
 import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 import Button from "@salesforce/design-system-react/components/button";
 
@@ -55,8 +56,24 @@ const CardFilter = () => {
       </article>
       <article
         class="slds-card"
-        style={{ float: "right", width: "339px", height: "364px" }}
+        style={{
+          float: "right",
+          width: "339px",
+          height: "364px",
+          margin: "20px",
+        }}
       >
+        <header class="slds-card__header">
+          <h1
+            style={{
+              fontSize: "20px",
+              fontFamily: "Merriweather",
+              fontWeight: "bold",
+            }}
+          >
+            Upcoming Meetings
+          </h1>
+        </header>
         <Calendar />
       </article>
       <article
