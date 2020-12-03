@@ -6,6 +6,11 @@ import "react-calendar/dist/Calendar.css";
 import Button from "@salesforce/design-system-react/components/button";
 
 const CardFilter = () => {
+  const state = {
+    filterSelect: "Region",
+    local: "Missouri",
+  };
+
   return (
     <div style={{ width: "1236px", marginLeft: "auto", marginRight: "auto" }}>
       <article
