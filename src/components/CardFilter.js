@@ -4,6 +4,8 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 import Button from "@salesforce/design-system-react/components/button";
+import Tabs from "@salesforce/design-system-react/components/tabs";
+import TabsPanel from "@salesforce/design-system-react/components/tabs/panel";
 
 const CardFilter = () => {
   const state = {
@@ -86,6 +88,10 @@ const CardFilter = () => {
         style={{ margin: "20px", float: "left", width: "814px" }}
       >
         Sort Meetings By
+        <Tabs indicatorColor="primary" textColor="primary" centered>
+          <TabsPanel label="Region" color="secondary"></TabsPanel>
+          <TabsPanel label="Date" color="secondary"></TabsPanel>
+        </Tabs>
       </article>
 
       <MeetingCard />
