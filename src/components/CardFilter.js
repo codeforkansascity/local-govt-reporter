@@ -89,8 +89,8 @@ const CardFilter = () => {
       >
         Sort Meetings By
         <Tabs indicatorColor="primary" textColor="primary" centered>
-          <TabsPanel label="Region" color="secondary"></TabsPanel>
-          <TabsPanel label="Date" color="secondary"></TabsPanel>
+          <TabsPanel label="Region"></TabsPanel>
+          <TabsPanel label="Date"></TabsPanel>
         </Tabs>
       </article>
 
