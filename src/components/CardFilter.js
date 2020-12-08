@@ -11,12 +11,8 @@ class CardFilter extends Component {
   state = {
     filterSelect: "Date",
     local: "Missouri",
+    checked: "Date",
   };
-
-  constructor(props) {
-    super(props);
-    this.state = { checked: "Date" };
-  }
 
   render() {
     const filter = ["Date", "Jurisdiction"];
@@ -108,10 +104,6 @@ class CardFilter extends Component {
           </div>
           <RadioButtonGroup
             onChange={(event) => this.setState({ checked: event.target.value })}
-            disabled={this.props.disabled}
-            required={this.props.required}
-            name={this.props.name}
-            errorId={this.props.errorId}
             style={{ float: "left", margin: "15px" }}
           >
             {filter.map((filter) => (
