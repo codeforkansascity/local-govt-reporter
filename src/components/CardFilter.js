@@ -98,13 +98,14 @@ class CardFilter extends Component {
               fontFamily: "Merriweather",
               float: "left",
               margin: "15px",
+              width: "220px",
             }}
           >
             Sort meetings by
           </div>
           <RadioButtonGroup
             onChange={(event) => this.setState({ checked: event.target.value })}
-            style={{ float: "left", margin: "15px" }}
+            style={{ float: "left", margin: "15px", width: "166px" }}
           >
             {filter.map((filter) => (
               <Radio
@@ -117,7 +118,7 @@ class CardFilter extends Component {
               />
             ))}
           </RadioButtonGroup>
-          <div style={{ float: "left" }}>
+          <div style={{ float: "left", width: "250px" }}>
             <p style={{ fontStyle: "italic" }}>
               See any inaccuracies in our information?
             </p>
