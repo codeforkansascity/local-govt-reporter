@@ -118,7 +118,7 @@ class CardFilter extends Component {
               />
             ))}
           </RadioButtonGroup>
-          <div style={{ float: "left", width: "250px" }}>
+          <div style={{ float: "left", width: "250px", margin: "15px" }}>
             <p style={{ fontStyle: "italic" }}>
               See any inaccuracies in our information?
             </p>
