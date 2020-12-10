@@ -20,52 +20,95 @@ class CardFilter extends Component {
     return (
       <div style={{ width: "1236px", marginLeft: "auto", marginRight: "auto" }}>
         <div class="slds-grid slds-gutters">
-          <article
-            class="slds-card slds-col slds-size_2-of-3"
-            style={{
-              margin: "20px",
-              float: "left",
-              width: "814px",
-              height: "256px",
-            }}
-          >
-            <header class="slds-card__header">
-              <h1
-                style={{
-                  fontSize: "30px",
-                  fontFamily: "Merriweather",
-                  fontWeight: "bold",
-                }}
-              >
-                Find local meetings and meeting minutes
-              </h1>
-            </header>
-            <div class="slds-card__body slds-card__body_inner">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                at porttitor sem. Aliquam erat volutpat. Donec placerat nisl
-                magna, et faucibus arcu condimentum sed.Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit. Aliquam at porttitor sem.
-                Aliquam erat volutpat. Donec placerat nisl magna, et faucibus.
-              </p>
-              <footer>
-                <Button
-                  class="slds-button slds-button_brand "
-                  href="javascript:void(0);"
-                  variant="outline-brand"
+          <div class="slds-col slds-size_2-of-3">
+            <article
+              class="slds-card"
+              style={{
+                margin: "20px",
+                float: "left",
+                width: "814px",
+                height: "256px",
+              }}
+            >
+              <header class="slds-card__header">
+                <h1
                   style={{
-                    position: "absolute",
-                    bottom: "15px",
-                    left: "15px",
-                    margin: "15px",
-                    fontSize: "12pt",
+                    fontSize: "30px",
+                    fontFamily: "Merriweather",
+                    fontWeight: "bold",
                   }}
                 >
-                  Need more help?
-                </Button>
-              </footer>
-            </div>
-          </article>
+                  Find local meetings and meeting minutes
+                </h1>
+              </header>
+              <div class="slds-card__body slds-card__body_inner">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aliquam at porttitor sem. Aliquam erat volutpat. Donec
+                  placerat nisl magna, et faucibus arcu condimentum sed.Lorem
+                  ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
+                  porttitor sem. Aliquam erat volutpat. Donec placerat nisl
+                  magna, et faucibus.
+                </p>
+                <footer>
+                  <Button
+                    class="slds-button slds-button_brand "
+                    href="javascript:void(0);"
+                    variant="outline-brand"
+                    style={{
+                      position: "absolute",
+                      bottom: "15px",
+                      left: "15px",
+                      margin: "15px",
+                      fontSize: "12pt",
+                    }}
+                  >
+                    Need more help?
+                  </Button>
+                </footer>
+              </div>
+            </article>
+            <article
+              class="slds-card"
+              style={{ margin: "20px", float: "left", width: "814px" }}
+            >
+              <div
+                style={{
+                  fontSize: "20px",
+                  fontFamily: "Merriweather",
+                  float: "left",
+                  margin: "15px",
+                  width: "220px",
+                }}
+              >
+                Sort meetings by
+              </div>
+              <RadioButtonGroup
+                onChange={(event) =>
+                  this.setState({ checked: event.target.value })
+                }
+                style={{ float: "left", margin: "15px", width: "166px" }}
+              >
+                {filter.map((filter) => (
+                  <Radio
+                    key={filter}
+                    id={filter}
+                    labels={{ label: filter }}
+                    value={filter}
+                    checked={this.state.checked === filter}
+                    variant="button-group"
+                  />
+                ))}
+              </RadioButtonGroup>
+              <div style={{ float: "left", width: "250px", margin: "15px" }}>
+                <p style={{ fontStyle: "italic" }}>
+                  See any inaccuracies in our information?
+                </p>
+                <p>Let us know</p>
+              </div>
+            </article>
+          </div>
+
           <article
             class="slds-card slds-col slds-size_1-of-3"
             style={{
@@ -88,49 +131,11 @@ class CardFilter extends Component {
             </header>
             <Calendar />
           </article>
-
-          <article
-            class="slds-card slds-col slds-size_2-of-3"
-            style={{ margin: "20px", float: "left", width: "814px" }}
-          >
-            <div
-              style={{
-                fontSize: "20px",
-                fontFamily: "Merriweather",
-                float: "left",
-                margin: "15px",
-                width: "220px",
-              }}
-            >
-              Sort meetings by
-            </div>
-            <RadioButtonGroup
-              onChange={(event) =>
-                this.setState({ checked: event.target.value })
-              }
-              style={{ float: "left", margin: "15px", width: "166px" }}
-            >
-              {filter.map((filter) => (
-                <Radio
-                  key={filter}
-                  id={filter}
-                  labels={{ label: filter }}
-                  value={filter}
-                  checked={this.state.checked === filter}
-                  variant="button-group"
-                />
-              ))}
-            </RadioButtonGroup>
-            <div style={{ float: "left", width: "250px", margin: "15px" }}>
-              <p style={{ fontStyle: "italic" }}>
-                See any inaccuracies in our information?
-              </p>
-              <p>Let us know</p>
-            </div>
-          </article>
         </div>
 
-        <MeetingCard />
+        <div class="slds-grid slds-wrap">
+          <MeetingCard />
+        </div>
       </div>
     );
   }

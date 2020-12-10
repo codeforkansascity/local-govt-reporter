@@ -3,7 +3,7 @@ import React from "react";
 const MeetingCard = () => {
   return (
     <article
-      class="slds-card"
+      class="slds-card slds-col slds-size_1-of-2"
       style={{ height: "300px", width: "578px", float: "left", margin: "20px" }}
     >
       <header class="slds-card__header">
