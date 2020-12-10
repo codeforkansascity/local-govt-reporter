@@ -69,10 +69,11 @@ class CardFilter extends Component {
               </div>
             </article>
             <article
-              class="slds-card"
+              class="slds-card slds-grid slds-gutters_direct"
               style={{ margin: "20px", float: "left", width: "814px" }}
             >
               <div
+                class="slds-col"
                 style={{
                   fontSize: "20px",
                   fontFamily: "Merriweather",
@@ -84,6 +85,7 @@ class CardFilter extends Component {
                 Sort meetings by
               </div>
               <RadioButtonGroup
+                class="slds-col"
                 onChange={(event) =>
                   this.setState({ checked: event.target.value })
                 }
@@ -100,11 +102,14 @@ class CardFilter extends Component {
                   />
                 ))}
               </RadioButtonGroup>
-              <div style={{ float: "left", width: "250px", margin: "15px" }}>
-                <p style={{ fontStyle: "italic" }}>
+              <div
+                class="slds-col"
+                style={{ float: "left", width: "250px", margin: "15px" }}
+              >
+                <p style={{ fontStyle: "italic", textAlign: "left" }}>
                   See any inaccuracies in our information?
                 </p>
-                <p>Let us know</p>
+                <p style={{ textAlign: "left" }}>Let us know</p>
               </div>
             </article>
           </div>
@@ -114,7 +119,7 @@ class CardFilter extends Component {
             style={{
               float: "right",
               width: "339px",
-              height: "364px",
+              height: "367px",
               margin: "20px",
             }}
           >
