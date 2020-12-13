@@ -55,6 +55,9 @@ class CardFilter extends Component {
           </p>
           <p style={{ textAlign: "left" }}>Let us know</p>
         </div>
+        {this.state.filterSelect === "Jurisdiction" && (
+          <div>In Jurisdiction</div>
+        )}
       </article>
     );
   }
