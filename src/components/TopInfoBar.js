@@ -1,22 +1,13 @@
 import React, { Component } from "react";
 import MeetingCard from "./MeetingCard";
+import CardFilter from "./CardFilter";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 import Button from "@salesforce/design-system-react/components/button";
-import RadioButtonGroup from "@salesforce/design-system-react/components/radio-button-group";
-import Radio from "@salesforce/design-system-react/components/radio-button-group/radio";
 
 class TopInfoBar extends Component {
-  state = {
-    filterSelect: "Date",
-    local: "Missouri",
-    checked: "Date",
-  };
-
   render() {
-    const filter = ["Date", "Jurisdiction"];
-
     return (
       <div style={{ width: "1236px", marginLeft: "auto", marginRight: "auto" }}>
         <div class="slds-grid slds-gutters">
@@ -68,50 +59,7 @@ class TopInfoBar extends Component {
                 </footer>
               </div>
             </article>
-            <article
-              class="slds-card slds-grid slds-gutters_direct"
-              style={{ margin: "20px", float: "left", width: "814px" }}
-            >
-              <div
-                class="slds-col"
-                style={{
-                  fontSize: "20px",
-                  fontFamily: "Merriweather",
-                  float: "left",
-                  margin: "15px",
-                  width: "220px",
-                }}
-              >
-                Sort meetings by
-              </div>
-              <RadioButtonGroup
-                class="slds-col"
-                onChange={(event) =>
-                  this.setState({ checked: event.target.value })
-                }
-                style={{ float: "left", margin: "15px", width: "166px" }}
-              >
-                {filter.map((filter) => (
-                  <Radio
-                    key={filter}
-                    id={filter}
-                    labels={{ label: filter }}
-                    value={filter}
-                    checked={this.state.checked === filter}
-                    variant="button-group"
-                  />
-                ))}
-              </RadioButtonGroup>
-              <div
-                class="slds-col"
-                style={{ float: "left", width: "250px", margin: "15px" }}
-              >
-                <p style={{ fontStyle: "italic", textAlign: "left" }}>
-                  See any inaccuracies in our information?
-                </p>
-                <p style={{ textAlign: "left" }}>Let us know</p>
-              </div>
-            </article>
+            <CardFilter />
           </div>
 
           <article
