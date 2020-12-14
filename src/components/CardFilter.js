@@ -7,7 +7,6 @@ import Radio from "@salesforce/design-system-react/components/radio-button-group
 
 class CardFilter extends Component {
   state = {
-    local: "Missouri",
     checked: "Date",
   };
 
@@ -35,7 +34,7 @@ class CardFilter extends Component {
           <RadioButtonGroup
             className="slds-col"
             onChange={(event) => this.setState({ checked: event.target.value })}
-            style={{ float: "left", margin: "15px", width: "166px" }}
+            style={{ margin: "15px", width: "166px" }}
           >
             {filter.map((filter) => (
               <Radio
