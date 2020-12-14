@@ -3,12 +3,12 @@ import React from "react";
 const MeetingCard = () => {
   return (
     <article
-      class="slds-card slds-col slds-size_1-of-2"
+      className="slds-card slds-col slds-size_1-of-2"
       style={{ height: "300px", width: "578px", float: "left", margin: "20px" }}
     >
-      <header class="slds-card__header">
+      <header className="slds-card__header">
         <h2
-          class="slds-card__header-title"
+          className="slds-card__header-title"
           style={{
             fontSize: "24px",
             paddingTop: "10px",
@@ -20,7 +20,7 @@ const MeetingCard = () => {
           Kansas City, MO
         </h2>
       </header>
-      <div class="slds-card__body slds-card__body_inner">
+      <div className="slds-card__body slds-card__body_inner">
         {/*Left Body Div*/}
         <div
           style={{
@@ -59,9 +59,9 @@ const MeetingCard = () => {
           </p>
         </div>
       </div>
-      <footer class="slds-card__footer">
+      <footer className="slds-card__footer">
         <a
-          class="slds-button slds-button_brand "
+          className="slds-button slds-button_brand "
           href="javascript:void(0);"
           style={{
             position: "absolute",

@@ -10,10 +10,10 @@ class TopInfoBar extends Component {
   render() {
     return (
       <div style={{ width: "1236px", marginLeft: "auto", marginRight: "auto" }}>
-        <div class="slds-grid slds-gutters">
-          <div class="slds-col slds-size_2-of-3">
+        <div className="slds-grid slds-gutters">
+          <div classname="slds-col slds-size_2-of-3">
             <article
-              class="slds-card"
+              className="slds-card"
               style={{
                 margin: "20px",
                 float: "left",
@@ -21,7 +21,7 @@ class TopInfoBar extends Component {
                 height: "256px",
               }}
             >
-              <header class="slds-card__header">
+              <header className="slds-card__header">
                 <h1
                   style={{
                     fontSize: "30px",
@@ -32,7 +32,7 @@ class TopInfoBar extends Component {
                   Find local meetings and meeting minutes
                 </h1>
               </header>
-              <div class="slds-card__body slds-card__body_inner">
+              <div className="slds-card__body slds-card__body_inner">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Aliquam at porttitor sem. Aliquam erat volutpat. Donec
@@ -43,10 +43,11 @@ class TopInfoBar extends Component {
                 </p>
                 <footer>
                   <Button
-                    class="slds-button slds-button_brand "
+                    className="slds-button slds-button_brand "
                     href="javascript:void(0);"
                     variant="outline-brand"
                     style={{
+                      color: "blue",
                       position: "absolute",
                       bottom: "15px",
                       left: "15px",
@@ -63,7 +64,7 @@ class TopInfoBar extends Component {
           </div>
 
           <article
-            class="slds-card slds-col slds-size_1-of-3"
+            className="slds-card slds-col slds-size_1-of-3"
             style={{
               float: "right",
               width: "339px",
@@ -71,7 +72,7 @@ class TopInfoBar extends Component {
               margin: "20px",
             }}
           >
-            <header class="slds-card__header">
+            <header className="slds-card__header">
               <h1
                 style={{
                   fontSize: "20px",
@@ -86,7 +87,7 @@ class TopInfoBar extends Component {
           </article>
         </div>
 
-        <div class="slds-grid slds-wrap">
+        <div className="slds-grid slds-wrap">
           <MeetingCard />
         </div>
       </div>

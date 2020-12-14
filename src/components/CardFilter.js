@@ -5,21 +5,21 @@ import Radio from "@salesforce/design-system-react/components/radio-button-group
 
 class CardFilter extends Component {
   state = {
-    filterSelect: "Date",
     local: "Missouri",
     checked: "Date",
   };
 
   render() {
     const filter = ["Date", "Jurisdiction"];
+    console.log(`'checked= ' ${this.state.checked}`);
 
     return (
       <article
-        class="slds-card slds-grid slds-gutters_direct"
+        className="slds-card slds-grid slds-gutters_direct"
         style={{ margin: "20px", float: "left", width: "814px" }}
       >
         <div
-          class="slds-col"
+          className="slds-col"
           style={{
             fontSize: "20px",
             fontFamily: "Merriweather",
@@ -31,7 +31,7 @@ class CardFilter extends Component {
           Sort meetings by
         </div>
         <RadioButtonGroup
-          class="slds-col"
+          className="slds-col"
           onChange={(event) => this.setState({ checked: event.target.value })}
           style={{ float: "left", margin: "15px", width: "166px" }}
         >
@@ -47,7 +47,7 @@ class CardFilter extends Component {
           ))}
         </RadioButtonGroup>
         <div
-          class="slds-col"
+          className="slds-col"
           style={{ float: "left", width: "250px", margin: "15px" }}
         >
           <p style={{ fontStyle: "italic", textAlign: "left" }}>
@@ -55,9 +55,7 @@ class CardFilter extends Component {
           </p>
           <p style={{ textAlign: "left" }}>Let us know</p>
         </div>
-        {this.state.filterSelect === "Jurisdiction" && (
-          <div>In Jurisdiction</div>
-        )}
+        {this.state.checked === "Jurisdiction" && <div>In Jurisdiction</div>}
       </article>
     );
   }
