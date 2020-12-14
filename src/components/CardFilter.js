@@ -11,7 +11,6 @@ class CardFilter extends Component {
 
   render() {
     const filter = ["Date", "Jurisdiction"];
-    console.log(`'checked= ' ${this.state.checked}`);
 
     return (
       <article

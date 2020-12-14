@@ -11,7 +11,7 @@ class TopInfoBar extends Component {
     return (
       <div style={{ width: "1236px", marginLeft: "auto", marginRight: "auto" }}>
         <div className="slds-grid slds-gutters">
-          <div classname="slds-col slds-size_2-of-3">
+          <div className="slds-col slds-size_2-of-3">
             <article
               className="slds-card"
               style={{
