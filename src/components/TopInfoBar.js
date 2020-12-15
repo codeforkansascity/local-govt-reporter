@@ -17,8 +17,8 @@ class TopInfoBar extends Component {
               style={{
                 margin: "20px",
                 float: "left",
-                width: "814px",
-                height: "256px",
+                width: "800px",
+                height: "216px",
               }}
             >
               <header className="slds-card__header">
@@ -33,7 +33,7 @@ class TopInfoBar extends Component {
                 </h1>
               </header>
               <div className="slds-card__body slds-card__body_inner">
-                <p>
+                <p style={{ fontSize: "14px", textAlign: "left" }}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Aliquam at porttitor sem. Aliquam erat volutpat. Donec
                   placerat nisl magna, et faucibus arcu condimentum sed.Lorem
@@ -68,7 +68,7 @@ class TopInfoBar extends Component {
             style={{
               float: "right",
               width: "339px",
-              height: "367px",
+              height: "327px",
               margin: "20px",
             }}
           >

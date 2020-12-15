@@ -20,7 +20,7 @@ class JurisdictionFilter extends Component {
             fontSize: "20px",
             fontFamily: "Merriweather",
             float: "left",
-            margin: "15px",
+            margin: "0px 15px 15px 0px",
           }}
         >
           State
@@ -30,7 +30,7 @@ class JurisdictionFilter extends Component {
           onChange={(event) =>
             this.setState({ stateChecked: event.target.value })
           }
-          style={{ margin: "15px" }}
+          style={{ margin: "0px 15px 15px 0px" }}
         >
           {stateFilter.map((stateFilter) => (
             <Radio
@@ -50,7 +50,7 @@ class JurisdictionFilter extends Component {
             fontSize: "20px",
             fontFamily: "Merriweather",
             float: "left",
-            margin: "15px",
+            margin: "0px 15px 15px 0px",
           }}
         >
           Jurisdiction
@@ -60,7 +60,7 @@ class JurisdictionFilter extends Component {
           onChange={(event) =>
             this.setState({ jurisdictionChecked: event.target.value })
           }
-          style={{ margin: "15px" }}
+          style={{ margin: "0px 15px 15px 0px" }}
         >
           {jurisdictionFilter.map((jurisdictionFilter) => (
             <Radio
