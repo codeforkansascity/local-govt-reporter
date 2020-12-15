@@ -83,7 +83,7 @@ class TopInfoBar extends Component {
                 Upcoming Meetings
               </h1>
             </header>
-            <Calendar />
+            <Calendar calendarType="US" />
           </article>
         </div>
 
