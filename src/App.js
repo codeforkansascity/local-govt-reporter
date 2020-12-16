@@ -10,10 +10,12 @@ import "./App.css";
 import TopInfoBar from "./components/TopInfoBar";
 import About from "./components/About";
 import CityInfo from "./components/CityInfo";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <Router>
+      <NavBar />
       <div className="App">
         <Switch>
           <Redirect exact from="/" to="/home" />
