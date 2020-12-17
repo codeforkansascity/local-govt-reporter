@@ -4,18 +4,19 @@ import {
   GlobalNavigationBar,
   GlobalNavigationBarLink,
   GlobalNavigationBarRegion,
-  IconSettings,
 } from "@salesforce/design-system-react";
 
 const NavBar = () => {
   return (
-    <IconSettings iconPath="/assets/icons">
-      <GlobalNavigationBar>
-        <GlobalNavigationBarRegion region="primary" navigation>
-          <GlobalNavigationBarLink active label="Home" id="home-link" />
-        </GlobalNavigationBarRegion>
-      </GlobalNavigationBar>
-    </IconSettings>
+    <GlobalNavigationBar>
+      <GlobalNavigationBarRegion region="primary" navigation>
+        <GlobalNavigationBarLink active label="Home" id="home" />
+      </GlobalNavigationBarRegion>
+      <GlobalNavigationBarRegion region="secondary" navigation>
+        <GlobalNavigationBarLink active label="Local News" id="news" />
+        <GlobalNavigationBarLink active label="About" id="about" />
+      </GlobalNavigationBarRegion>
+    </GlobalNavigationBar>
   );
 };
 
