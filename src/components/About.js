@@ -5,7 +5,7 @@ const About = () => {
     <div style={{ width: "1236px", marginLeft: "auto", marginRight: "auto" }}>
       <div>
         <h1>Down in San Francisco</h1>
-        <p>
+        <p style={{ fontSize: "24px" }}>
           Government cannot go unchecked in a democracy. That’s why we worked
           with the team of civic coders at KC Digital Drive to develop
           ___________, a community-designed effort to standardize, collect and
@@ -17,19 +17,19 @@ const About = () => {
       </div>
       <div>
         <h1>Why we deliver...</h1>
-        <div>
+        <div style={{ fontSize: "18px" }}>
           _________ equips journalists with public records to report local news
           and residents with information to effect change in their communities.
         </div>
-        <div>
+        <div style={{ fontSize: "18px" }}>
           Allows the public to have easier access to the government records,
           enabling easier civic participation.
         </div>
-        <div>
+        <div style={{ fontSize: "18px" }}>
           _________ equips journalists with public records to report local news
           and residents with information to effect change in their communities.{" "}
         </div>
-        <div>
+        <div style={{ fontSize: "18px" }}>
           Allows the public to have easier access to the government records,
           enabling easier civic participation.
         </div>
@@ -37,13 +37,13 @@ const About = () => {
       <div>
         <h1>Our Partners</h1>
         <div>
-          <p>
+          <p style={{ fontSize: "24px" }}>
             Identifying a shared interest in illuminating civic processes to
             preserve democracy, KC Digital Drive joined the effort as a
             technology partner.
           </p>
         </div>
-        <div>
+        <div style={{ fontSize: "24px" }}>
           Jackson County Advocate The Kansas City Star Kansas Press Association
           Columbia Missourian at the University of Missouri School of Journalism
           KCUR KLC Journal Northeast News Shawnee Mission Post and Startland
