@@ -13,8 +13,13 @@ const NavBar = () => {
         <GlobalNavigationBarLink active label="Home" id="home" />
       </GlobalNavigationBarRegion>
       <GlobalNavigationBarRegion region="secondary" navigation>
-        <GlobalNavigationBarLink active label="Local News" id="news" />
-        <GlobalNavigationBarLink active label="About" id="about" />
+        <GlobalNavigationBarLink
+          active
+          label="Local News"
+          id="news"
+          to="/news"
+        />
+        <GlobalNavigationBarLink active label="About" id="about" to="/about" />
       </GlobalNavigationBarRegion>
     </GlobalNavigationBar>
   );
