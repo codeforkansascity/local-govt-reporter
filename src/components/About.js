@@ -4,7 +4,14 @@ const About = () => {
   return (
     <div style={{ width: "1236px", marginLeft: "auto", marginRight: "auto" }}>
       <div>
-        <h1>Down in San Francisco</h1>
+        <h1
+          style={{
+            fontSize: "68px",
+            fontWeight: "bold",
+          }}
+        >
+          Down in San Francisco
+        </h1>
         <p style={{ fontSize: "24px" }}>
           Government cannot go unchecked in a democracy. That’s why we worked
           with the team of civic coders at KC Digital Drive to develop
@@ -16,7 +23,9 @@ const About = () => {
         </p>
       </div>
       <div>
-        <h1>Why we deliver...</h1>
+        <h1 style={{ fontSize: "68px", fontWeight: "bold" }}>
+          Why we deliver...
+        </h1>
         <div style={{ fontSize: "18px" }}>
           _________ equips journalists with public records to report local news
           and residents with information to effect change in their communities.
@@ -35,7 +44,7 @@ const About = () => {
         </div>
       </div>
       <div>
-        <h1>Our Partners</h1>
+        <h1 style={{ fontSize: "68px", fontWeight: "bold" }}>Our Partners</h1>
         <div>
           <p style={{ fontSize: "24px" }}>
             Identifying a shared interest in illuminating civic processes to
