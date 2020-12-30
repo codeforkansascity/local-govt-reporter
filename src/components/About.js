@@ -8,11 +8,13 @@ const About = () => {
           style={{
             fontSize: "68px",
             fontWeight: "bold",
+            float: "left",
+            display: "block",
           }}
         >
           Down in San Francisco
         </h1>
-        <p style={{ fontSize: "24px" }}>
+        <p style={{ fontSize: "24px", float: "left", display: "block" }}>
           Government cannot go unchecked in a democracy. That’s why we worked
           with the team of civic coders at KC Digital Drive to develop
           ___________, a community-designed effort to standardize, collect and
@@ -23,10 +25,10 @@ const About = () => {
         </p>
       </div>
       <div>
-        <h1 style={{ fontSize: "68px", fontWeight: "bold" }}>
+        <h1 style={{ fontSize: "68px", fontWeight: "bold", float: "left" }}>
           Why we deliver...
         </h1>
-        <div style={{ fontSize: "18px" }}>
+        <div style={{ fontSize: "18px", float: "left" }}>
           _________ equips journalists with public records to report local news
           and residents with information to effect change in their communities.
         </div>
