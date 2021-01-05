@@ -1,4 +1,5 @@
 import React from "react";
+import CityInfoMeeting from "./CityInfoMeeting";
 
 const CityInfo = () => {
   return (
@@ -11,9 +12,11 @@ const CityInfo = () => {
       </article>
       <article className="slds-card">
         <h1>Upcoming Meetings</h1>
+        <CityInfoMeeting />
       </article>
       <article className="slds-card">
         <h1>Past Meetings</h1>
+        <CityInfoMeeting />
       </article>
     </div>
   );
