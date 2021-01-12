@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import JurisdictionFilter from "./JurisdictionFilter";
+import DateFilter from "./DateFilter";
 
 import RadioButtonGroup from "@salesforce/design-system-react/components/radio-button-group";
 import Radio from "@salesforce/design-system-react/components/radio-button-group/radio";
@@ -57,6 +58,7 @@ class CardFilter extends Component {
             <p style={{ textAlign: "left" }}>Let us know</p>
           </div>
         </div>
+        {this.state.checked === "Date" && <DateFilter />}
         {this.state.checked === "Jurisdiction" && <JurisdictionFilter />}
       </article>
     );
