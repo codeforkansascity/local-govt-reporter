@@ -26,6 +26,7 @@ class DateFilter extends Component {
           Start Date
         </div>
         <Datepicker
+          className="slds-col"
           labels={{
             label: "Date",
           }}
@@ -67,6 +68,37 @@ class DateFilter extends Component {
         >
           End Date
         </div>
+        <Datepicker
+          className="slds-col"
+          labels={{
+            label: "Date",
+          }}
+          onChange={(event, data) => {
+            this.handleChange(event, data);
+
+            if (this.props.action) {
+              const dataAsArray = Object.keys(data).map((key) => data[key]);
+              this.props.action("onChange")(event, data, ...dataAsArray);
+            } else if (console) {
+              console.log("onChange", event, data);
+            }
+          }}
+          onCalendarFocus={(event, data) => {
+            if (this.props.action) {
+              const dataAsArray = Object.keys(data).map((key) => data[key]);
+              this.props.action("onCalendarFocus")(event, data, ...dataAsArray);
+            } else if (console) {
+              console.log("onCalendarFocus", event, data);
+            }
+          }}
+          formatter={(date) => {
+            return date ? moment(date).format("M/D/YYYY") : "";
+          }}
+          parser={(dateString) => {
+            return moment(dateString, "MM-DD-YYYY").toDate();
+          }}
+          value={this.state.value}
+        />
       </div>
     );
   }
