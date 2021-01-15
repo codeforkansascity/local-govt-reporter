@@ -5,13 +5,17 @@ import Datepicker from "@salesforce/design-system-react/components/date-picker";
 
 class DateFilter extends Component {
   state = {
-    value: undefined,
+    startValue: undefined,
+    endValue: undefined,
   };
-  render() {
-    const handleChange = (event, data) => {
-      this.setState({ value: data.date });
-    };
+  handleStartChange(event, data) {
+    this.setState({ startValue: data.date });
+  }
+  handleEndChange(event, data) {
+    this.setState({ value: data.date });
+  }
 
+  render() {
     return (
       <div className="slds-grid slds-gutters_direct">
         <div
@@ -25,13 +29,14 @@ class DateFilter extends Component {
         >
           Start Date
         </div>
+
         <Datepicker
           className="slds-col"
           labels={{
             label: "Date",
           }}
           onChange={(event, data) => {
-            this.handleChange(event, data);
+            this.handleStartChange(event, data);
 
             if (this.props.action) {
               const dataAsArray = Object.keys(data).map((key) => data[key]);
@@ -54,7 +59,7 @@ class DateFilter extends Component {
           parser={(dateString) => {
             return moment(dateString, "MM-DD-YYYY").toDate();
           }}
-          value={this.state.value}
+          value={this.state.startValue}
         />
 
         <div
@@ -68,13 +73,14 @@ class DateFilter extends Component {
         >
           End Date
         </div>
+
         <Datepicker
           className="slds-col"
           labels={{
             label: "Date",
           }}
           onChange={(event, data) => {
-            this.handleChange(event, data);
+            this.handleEndChange(event, data);
 
             if (this.props.action) {
               const dataAsArray = Object.keys(data).map((key) => data[key]);
@@ -97,7 +103,7 @@ class DateFilter extends Component {
           parser={(dateString) => {
             return moment(dateString, "MM-DD-YYYY").toDate();
           }}
-          value={this.state.value}
+          value={this.state.endValue}
         />
       </div>
     );
