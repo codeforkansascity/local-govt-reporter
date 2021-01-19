@@ -5,9 +5,11 @@ import Datepicker from "@salesforce/design-system-react/components/date-picker";
 
 class DateFilter extends Component {
   state = {
-    startValue: undefined,
-    endValue: undefined,
+    startValue: moment().subtract(30, "days"),
+    endValue: moment(),
   };
+
+  //Date Setters
   handleStartChange(event, data) {
     this.setState({ startValue: data.date });
   }
