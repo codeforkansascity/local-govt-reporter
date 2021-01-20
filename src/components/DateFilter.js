@@ -34,9 +34,6 @@ class DateFilter extends Component {
 
         <Datepicker
           className="slds-col"
-          labels={{
-            label: "Date",
-          }}
           onChange={(event, data) => {
             this.handleStartChange(event, data);
 
@@ -63,7 +60,7 @@ class DateFilter extends Component {
           }}
           value={this.state.startValue}
         />
-
+        <div className="slds-col"></div>
         <div
           className="slds-col"
           style={{
@@ -78,9 +75,6 @@ class DateFilter extends Component {
 
         <Datepicker
           className="slds-col"
-          labels={{
-            label: "Date",
-          }}
           onChange={(event, data) => {
             this.handleEndChange(event, data);
 
@@ -107,6 +101,7 @@ class DateFilter extends Component {
           }}
           value={this.state.endValue}
         />
+        <div className="slds-col"></div>
       </div>
     );
   }
