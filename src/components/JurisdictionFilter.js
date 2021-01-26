@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import RadioButtonGroup from "@salesforce/design-system-react/components/radio-button-group";
 import Radio from "@salesforce/design-system-react/components/radio-button-group/radio";
+import IconSettings from "@salesforce/design-system-react/components/icon-settings";
+import Dropdown from "@salesforce/design-system-react/components/menu-dropdown";
 
 class JurisdictionFilter extends Component {
   state = {
@@ -43,36 +45,27 @@ class JurisdictionFilter extends Component {
             />
           ))}
         </RadioButtonGroup>
-
-        <div
+        <div className="slds-col"></div>
+        <Dropdown
           className="slds-col"
-          style={{
-            fontSize: "20px",
-            fontFamily: "Merriweather",
-            float: "left",
-            margin: "0px 15px 15px 0px",
-          }}
-        >
-          Jurisdiction
-        </div>
-        <RadioButtonGroup
-          className="slds-col"
-          onChange={(event) =>
-            this.setState({ jurisdictionChecked: event.target.value })
-          }
-          style={{ margin: "0px 15px 15px 0px" }}
-        >
-          {jurisdictionFilter.map((jurisdictionFilter) => (
-            <Radio
-              key={jurisdictionFilter}
-              id={jurisdictionFilter}
-              labels={{ label: jurisdictionFilter }}
-              value={jurisdictionFilter}
-              checked={this.state.jurisdictionChecked === jurisdictionFilter}
-              variant="button-group"
-            />
-          ))}
-        </RadioButtonGroup>
+          align="right"
+          iconCategory="utility"
+          iconName="down"
+          iconPosition="right"
+          label="Jurisdiction"
+          options={[
+            { label: "Menu Item One", value: "A0" },
+            { label: "Menu Item Two", value: "B0" },
+            { label: "Menu Item Three", value: "C0" },
+            { type: "divider" },
+            { label: "Menu Item Four", value: "D0" },
+            { label: "Menu Item Five", value: "E0" },
+            { label: "Menu Item Six", value: "F0" },
+            { type: "divider" },
+            { label: "Menu Item Seven", value: "G0" },
+          ]}
+        />
+        <div className="slds-col"></div>
       </div>
     );
   }
