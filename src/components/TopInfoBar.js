@@ -11,7 +11,7 @@ import Button from "@salesforce/design-system-react/components/button";
 import { useQuery } from "react-query";
 
 export const API_URL =
-  process.env.API_URL || 'https://localhost:5001';
+  process.env.API_URL || 'https://jt5wf041v4.execute-api.us-east-2.amazonaws.com/Prod';
 
 const findNextMeeting = (data) => {
   const currentDate = new Date(new Date().toDateString());
