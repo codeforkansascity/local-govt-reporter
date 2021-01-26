@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import RadioButtonGroup from "@salesforce/design-system-react/components/radio-button-group";
 import Radio from "@salesforce/design-system-react/components/radio-button-group/radio";
-import IconSettings from "@salesforce/design-system-react/components/icon-settings";
 import Dropdown from "@salesforce/design-system-react/components/menu-dropdown";
 
 class JurisdictionFilter extends Component {
@@ -12,7 +11,16 @@ class JurisdictionFilter extends Component {
   };
   render() {
     const stateFilter = ["Missouri", "Kansas"];
-    const jurisdictionFilter = ["All", "County", "Local"];
+    const jurisdictions = [
+      { label: "All", value: "A0" },
+      { label: "County", value: "A1" },
+      { label: "Local", value: "A2" },
+    ];
+    const meetingType = [
+      { label: "All", value: "A0" },
+      { label: "Health", value: "A1" },
+      { label: "Transportation", value: "A2" },
+    ];
 
     return (
       <div className="slds-grid slds-gutters_direct">
@@ -53,17 +61,16 @@ class JurisdictionFilter extends Component {
           iconName="down"
           iconPosition="right"
           label="Jurisdiction"
-          options={[
-            { label: "Menu Item One", value: "A0" },
-            { label: "Menu Item Two", value: "B0" },
-            { label: "Menu Item Three", value: "C0" },
-            { type: "divider" },
-            { label: "Menu Item Four", value: "D0" },
-            { label: "Menu Item Five", value: "E0" },
-            { label: "Menu Item Six", value: "F0" },
-            { type: "divider" },
-            { label: "Menu Item Seven", value: "G0" },
-          ]}
+          options={jurisdictions}
+        />
+        <Dropdown
+          className="slds-col"
+          align="right"
+          iconCategory="utility"
+          iconName="down"
+          iconPosition="right"
+          label="Meeting Type"
+          options={meetingType}
         />
         <div className="slds-col"></div>
       </div>
