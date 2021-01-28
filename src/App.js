@@ -11,6 +11,7 @@ import TopInfoBar from "./components/TopInfoBar";
 import About from "./components/About";
 import CityInfo from "./components/CityInfo";
 import NavBar from "./components/NavBar";
+
 import { QueryClient, QueryClientProvider } from 'react-query'
  
  const queryClient = new QueryClient()
@@ -32,6 +33,7 @@ function App() {
         </div>
       </Router>
     </QueryClientProvider>
+
   );
 }
 

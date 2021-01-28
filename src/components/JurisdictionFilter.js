@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import RadioButtonGroup from "@salesforce/design-system-react/components/radio-button-group";
 import Radio from "@salesforce/design-system-react/components/radio-button-group/radio";
+import Dropdown from "@salesforce/design-system-react/components/menu-dropdown";
+
 
 class JurisdictionFilter extends Component {
   state = {
@@ -10,7 +12,18 @@ class JurisdictionFilter extends Component {
   };
   render() {
     const stateFilter = ["Missouri", "Kansas"];
-    const jurisdictionFilter = ["All", "County", "Local"];
+
+    const jurisdictions = [
+      { label: "All", value: "A0" },
+      { label: "County", value: "A1" },
+      { label: "Local", value: "A2" },
+    ];
+    const meetingType = [
+      { label: "All", value: "A0" },
+      { label: "Health", value: "A1" },
+      { label: "Transportation", value: "A2" },
+    ];
+
 
     return (
       <div className="slds-grid slds-gutters_direct">
@@ -44,35 +57,28 @@ class JurisdictionFilter extends Component {
           ))}
         </RadioButtonGroup>
 
-        <div
+        <div className="slds-col"></div>
+        <Dropdown
           className="slds-col"
-          style={{
-            fontSize: "20px",
-            fontFamily: "Merriweather",
-            float: "left",
-            margin: "0px 15px 15px 0px",
-          }}
-        >
-          Jurisdiction
-        </div>
-        <RadioButtonGroup
+          align="right"
+          iconCategory="utility"
+          iconName="down"
+          iconPosition="right"
+          label="Jurisdiction"
+          options={jurisdictions}
+        />
+        <Dropdown
           className="slds-col"
-          onChange={(event) =>
-            this.setState({ jurisdictionChecked: event.target.value })
-          }
-          style={{ margin: "0px 15px 15px 0px" }}
-        >
-          {jurisdictionFilter.map((jurisdictionFilter) => (
-            <Radio
-              key={jurisdictionFilter}
-              id={jurisdictionFilter}
-              labels={{ label: jurisdictionFilter }}
-              value={jurisdictionFilter}
-              checked={this.state.jurisdictionChecked === jurisdictionFilter}
-              variant="button-group"
-            />
-          ))}
-        </RadioButtonGroup>
+          align="right"
+          iconCategory="utility"
+          iconName="down"
+          iconPosition="right"
+          label="Meeting Type"
+          options={meetingType}
+          style={{ marginLeft: "15px" }}
+        />
+        <div className="slds-col"></div>
+
       </div>
     );
   }

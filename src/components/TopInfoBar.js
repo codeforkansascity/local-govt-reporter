@@ -1,10 +1,14 @@
-import React from "react";
+
+import React, { Component } from "react";
+
 import { sortedIndexBy } from 'lodash';
+
 
 import MeetingCard from "./MeetingCard";
 import CardFilter from "./CardFilter";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+
 
 import "./TopInfoBar.scss";
 import Button from "@salesforce/design-system-react/components/button";
@@ -96,17 +100,21 @@ const TopInfoBar = () => {
               margin: "20px",
               float: "left",
               width: "800px",
-              height: "226px",
+              height: "215px",
+
             }}
           >
             <header className="slds-card__header">
               <h1
                 style={{
-                  fontSize: "30px",
+
+                  fontSize: "20px",
+
                   fontFamily: "Merriweather",
                   fontWeight: "bold",
                 }}
               >
+
                 Find local meetings and meeting minutes
               </h1>
             </header>
