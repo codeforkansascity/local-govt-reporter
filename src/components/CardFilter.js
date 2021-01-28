@@ -17,7 +17,12 @@ class CardFilter extends Component {
     return (
       <article
         className="slds-card"
-        style={{ margin: "20px", float: "left", width: "800px" }}
+        style={{
+          margin: "20px",
+          float: "left",
+          width: "800px",
+          height: "120px",
+        }}
       >
         <div className="slds-grid slds-gutters_direct">
           <div

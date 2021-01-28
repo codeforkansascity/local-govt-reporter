@@ -26,7 +26,7 @@ class DateFilter extends Component {
             fontSize: "20px",
             fontFamily: "Merriweather",
             float: "left",
-            margin: "0px 15px 15px 0px",
+            margin: "0px 15px 15px 15px",
           }}
         >
           Start Date

@@ -71,6 +71,7 @@ class JurisdictionFilter extends Component {
           iconPosition="right"
           label="Meeting Type"
           options={meetingType}
+          style={{ marginLeft: "15px" }}
         />
         <div className="slds-col"></div>
       </div>
