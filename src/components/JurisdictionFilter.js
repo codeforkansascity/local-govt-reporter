@@ -4,6 +4,7 @@ import RadioButtonGroup from "@salesforce/design-system-react/components/radio-b
 import Radio from "@salesforce/design-system-react/components/radio-button-group/radio";
 import Dropdown from "@salesforce/design-system-react/components/menu-dropdown";
 
+
 class JurisdictionFilter extends Component {
   state = {
     stateChecked: "Missouri",
@@ -11,6 +12,7 @@ class JurisdictionFilter extends Component {
   };
   render() {
     const stateFilter = ["Missouri", "Kansas"];
+
     const jurisdictions = [
       { label: "All", value: "A0" },
       { label: "County", value: "A1" },
@@ -21,6 +23,7 @@ class JurisdictionFilter extends Component {
       { label: "Health", value: "A1" },
       { label: "Transportation", value: "A2" },
     ];
+
 
     return (
       <div className="slds-grid slds-gutters_direct">
@@ -53,6 +56,7 @@ class JurisdictionFilter extends Component {
             />
           ))}
         </RadioButtonGroup>
+
         <div className="slds-col"></div>
         <Dropdown
           className="slds-col"
@@ -74,6 +78,7 @@ class JurisdictionFilter extends Component {
           style={{ marginLeft: "15px" }}
         />
         <div className="slds-col"></div>
+
       </div>
     );
   }

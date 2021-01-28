@@ -1,6 +1,40 @@
 import React from "react";
 
-const MeetingCard = () => {
+
+const getJurisdictionMeetingsPage = (jurisdiction, state) => {
+  switch (jurisdiction)
+  {
+    case 'Mission':
+      return 'https://www.missionks.org/agenda.aspx';
+    case 'Jackson':
+      return 'https://jacksonco.legistar.com/Calendar.aspx';
+    case 'Overland Park':
+      return 'https://opkansas.civicweb.net/Portal/MeetingTypeList.aspx';
+    case 'KCMO':
+      return 'http://cityclerk.kcmo.org/liveweb/Meetings/HistoricalMeetings.aspx';
+    default:
+      return ``;
+  }
+}
+
+const getJurisdictionLinkTitle = (jurisdiction, state) => {
+  switch (jurisdiction)
+  {
+    case 'Jackson':
+    case 'Johnson':
+      return `${jurisdiction} County, ${state}`;
+    case 'KCMO':
+      return 'Kansas City, MO'
+    default:
+      return `${jurisdiction}, ${state}`;
+  }
+}
+
+const MeetingCard = ({
+  meeting,
+  nextMeeting
+}) => {
+
   return (
     <article
       className="slds-card slds-col slds-size_1-of-2"
@@ -17,12 +51,16 @@ const MeetingCard = () => {
             fontWeight: "bold",
           }}
         >
-          Kansas City, MO
+
+          {getJurisdictionLinkTitle(meeting.Jurisdiction, meeting.State)}
+
         </h2>
       </header>
       <div className="slds-card__body slds-card__body_inner">
         {/*Left Body Div*/}
-        <div
+
+        {meeting && <div
+
           style={{
             width: "50%",
             float: "left",
@@ -32,16 +70,17 @@ const MeetingCard = () => {
           }}
         >
           <p style={{ fontSize: "10pt", paddingBottom: "5px" }}>Last Meeting</p>
-          <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Date Time</p>
-          <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Location</p>
+
+          <p style={{ fontSize: "12pt", fontWeight: "bold" }}>{meeting.MeetingDate}</p>
           <p
             style={{ fontSize: "12pt", fontStyle: "italic", paddingTop: "5px" }}
           >
-            Available Items
+            {meeting.MeetingType}
           </p>
-        </div>
+        </div>}
         {/*Right Body Div*/}
-        <div
+        {nextMeeting && <div
+
           style={{
             width: "50%",
             float: "right",
@@ -50,19 +89,22 @@ const MeetingCard = () => {
           }}
         >
           <p style={{ fontSize: "10pt", paddingBottom: "5px" }}>Next Meeting</p>
-          <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Date Time</p>
-          <p style={{ fontSize: "12pt", fontWeight: "bold" }}>Location</p>
+
+          <p style={{ fontSize: "12pt", fontWeight: "bold" }}>{nextMeeting.MeetingDate}</p>
           <p
             style={{ fontSize: "12pt", fontStyle: "italic", paddingTop: "5px" }}
           >
-            Available Items
+            {nextMeeting.MeetingType}
           </p>
-        </div>
+        </div>}
+
       </div>
       <footer className="slds-card__footer">
         <a
           className="slds-button slds-button_brand "
-          href="javascript:void(0);"
+
+          href={getJurisdictionMeetingsPage(meeting.Jurisdiction, meeting.State)}
+
           style={{
             position: "absolute",
             bottom: "15px",
@@ -71,7 +113,9 @@ const MeetingCard = () => {
             fontSize: "12pt",
           }}
         >
-          View All Info For KCMO
+
+          {`View All Info For ${getJurisdictionLinkTitle(meeting.Jurisdiction, meeting.State)}`}
+
         </a>
       </footer>
     </article>
