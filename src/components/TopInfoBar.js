@@ -1,52 +1,54 @@
-
 import React, { Component } from "react";
 
-import { sortedIndexBy } from 'lodash';
-
+import { sortedIndexBy } from "lodash";
 
 import MeetingCard from "./MeetingCard";
 import CardFilter from "./CardFilter";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-
 import "./TopInfoBar.scss";
 import Button from "@salesforce/design-system-react/components/button";
 import { useQuery } from "react-query";
 
 export const API_URL =
-  process.env.API_URL || 'https://jt5wf041v4.execute-api.us-east-2.amazonaws.com/Prod';
+  process.env.API_URL ||
+  "https://jt5wf041v4.execute-api.us-east-2.amazonaws.com/Prod";
 
 const findNextMeeting = (data) => {
   const currentDate = new Date(new Date().toDateString());
 
-  for(var i = 0; i < data.length; i++) {
-    if(new Date(data[i].MeetingDate) > currentDate) {
-      return data[i]
-    }
-  }
-
-  return undefined;
-}
-
-const findPreviousMeeting = (data) => {
-  const currentDate = new Date(new Date().toDateString());
-
-  for(var i = data.length - 1; i > 0; i--) {
-    if(new Date(data[i].MeetingDate.replaceAll('-', '/')) < currentDate) {
+  for (var i = 0; i < data.length; i++) {
+    if (new Date(data[i].MeetingDate) > currentDate) {
       return data[i];
     }
   }
 
   return undefined;
-}
+};
+
+const findPreviousMeeting = (data) => {
+  const currentDate = new Date(new Date().toDateString());
+
+  for (var i = data.length - 1; i > 0; i--) {
+    if (new Date(data[i].MeetingDate.replaceAll("-", "/")) < currentDate) {
+      return data[i];
+    }
+  }
+
+  return undefined;
+};
 
 const sortData = (data) => {
   const hash = data.reduce((dataHash, meeting) => {
     if (dataHash[meeting.Jurisdiction]) {
       dataHash[meeting.Jurisdiction].splice(
-        sortedIndexBy(dataHash[meeting.Jurisdiction], meeting, (meeting) => meeting.MeetingDate), 
-        0, 
+        sortedIndexBy(
+          dataHash[meeting.Jurisdiction],
+          meeting,
+          (meeting) => meeting.MeetingDate
+        ),
+        0,
         meeting
       );
     } else {
@@ -56,7 +58,7 @@ const sortData = (data) => {
   }, {});
 
   return hash;
-}
+};
 
 const getMeetingDates = (sortedData) => {
   return Object.values(sortedData).reduce((dataHash, meetings) => {
@@ -69,14 +71,12 @@ const getMeetingDates = (sortedData) => {
     });
 
     return dataHash;
-  }, {})
+  }, {});
 };
 
 const TopInfoBar = () => {
-  const { isLoading, error, data: meetings = [] } = useQuery('repoData', () =>
-    fetch(`${API_URL}/api/meetings`).then(res =>
-      res.json()
-    )
+  const { isLoading, error, data: meetings = [] } = useQuery("repoData", () =>
+    fetch(`${API_URL}/api/meetings`).then((res) => res.json())
   );
 
   if (isLoading) {
@@ -101,31 +101,27 @@ const TopInfoBar = () => {
               float: "left",
               width: "800px",
               height: "215px",
-
             }}
           >
             <header className="slds-card__header">
               <h1
                 style={{
-
                   fontSize: "20px",
 
                   fontFamily: "Merriweather",
                   fontWeight: "bold",
                 }}
               >
-
                 Find local meetings and meeting minutes
               </h1>
             </header>
             <div className="slds-card__body slds-card__body_inner">
               <p style={{ fontSize: "14px", textAlign: "left" }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Aliquam at porttitor sem. Aliquam erat volutpat. Donec
-                placerat nisl magna, et faucibus arcu condimentum sed.Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
-                porttitor sem. Aliquam erat volutpat. Donec placerat nisl
-                magna, et faucibus.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                at porttitor sem. Aliquam erat volutpat. Donec placerat nisl
+                magna, et faucibus arcu condimentum sed.Lorem ipsum dolor sit
+                amet, consectetur adipiscing elit. Aliquam at porttitor sem.
+                Aliquam erat volutpat. Donec placerat nisl magna, et faucibus.
               </p>
               <footer>
                 <Button
@@ -153,7 +149,7 @@ const TopInfoBar = () => {
           style={{
             float: "right",
             width: "339px",
-            height: "347px",
+            height: "375px",
             margin: "20px",
           }}
         >
@@ -168,27 +164,31 @@ const TopInfoBar = () => {
               Upcoming Meetings
             </h1>
           </header>
-          <Calendar calendarType="US" tileClassName={({ activeStartDate, date, view }) => {
-            console.log(meetingDates);
-            if (meetingDates[date.toISOString().substring(0, 10)]) {
-              return 'meeting-date';
-            }
-          }} />
+          <Calendar
+            calendarType="US"
+            tileClassName={({ activeStartDate, date, view }) => {
+              console.log(meetingDates);
+              if (meetingDates[date.toISOString().substring(0, 10)]) {
+                return "meeting-date";
+              }
+            }}
+          />
         </article>
       </div>
 
       <div className="slds-grid slds-wrap">
-        {Object.keys(sortedData).map(key => { 
-          return <MeetingCard
-            key={key}
-            meeting={findPreviousMeeting(sortedData[key])} 
-            nextMeeting={findNextMeeting(sortedData[key])}
-          />
+        {Object.keys(sortedData).map((key) => {
+          return (
+            <MeetingCard
+              key={key}
+              meeting={findPreviousMeeting(sortedData[key])}
+              nextMeeting={findNextMeeting(sortedData[key])}
+            />
+          );
         })}
       </div>
     </div>
   );
-
-}
+};
 
 export default TopInfoBar;
