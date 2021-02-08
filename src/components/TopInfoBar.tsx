@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { sortedIndexBy } from "lodash";
 
@@ -8,14 +8,19 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 import "./TopInfoBar.scss";
-import Button from "@salesforce/design-system-react/components/button";
+import { Button } from "@salesforce/design-system-react";
 import { useQuery } from "react-query";
+import { Meeting } from "../models";
+
+interface MeetingHash {
+  [key: string]: Meeting[]
+}
 
 export const API_URL =
   process.env.API_URL ||
   "https://jt5wf041v4.execute-api.us-east-2.amazonaws.com/Prod";
 
-const findNextMeeting = (data) => {
+const findNextMeeting = (data: Meeting[]) => {
   const currentDate = new Date(new Date().toDateString());
 
   for (var i = 0; i < data.length; i++) {
@@ -27,7 +32,7 @@ const findNextMeeting = (data) => {
   return undefined;
 };
 
-const findPreviousMeeting = (data) => {
+const findPreviousMeeting = (data: Meeting[]) => {
   const currentDate = new Date(new Date().toDateString());
 
   for (var i = data.length - 1; i > 0; i--) {
@@ -39,8 +44,8 @@ const findPreviousMeeting = (data) => {
   return undefined;
 };
 
-const sortData = (data) => {
-  const hash = data.reduce((dataHash, meeting) => {
+const sortData = (data: Meeting[]) => {
+  const hash = data.reduce<MeetingHash>((dataHash, meeting) => {
     if (dataHash[meeting.Jurisdiction]) {
       dataHash[meeting.Jurisdiction].splice(
         sortedIndexBy(
@@ -60,8 +65,8 @@ const sortData = (data) => {
   return hash;
 };
 
-const getMeetingDates = (sortedData) => {
-  return Object.values(sortedData).reduce((dataHash, meetings) => {
+const getMeetingDates = (sortedData: MeetingHash) => {
+  return Object.values(sortedData).reduce<MeetingHash>((dataHash, meetings) => {
     meetings.forEach((meeting) => {
       if (dataHash[meeting.MeetingDate]) {
         dataHash[meeting.MeetingDate].push(meeting);
@@ -167,10 +172,11 @@ const TopInfoBar = () => {
           <Calendar
             calendarType="US"
             tileClassName={({ activeStartDate, date, view }) => {
-              console.log(meetingDates);
               if (meetingDates[date.toISOString().substring(0, 10)]) {
                 return "meeting-date";
               }
+
+              return null;
             }}
           />
         </article>
@@ -178,13 +184,20 @@ const TopInfoBar = () => {
 
       <div className="slds-grid slds-wrap">
         {Object.keys(sortedData).map((key) => {
-          return (
-            <MeetingCard
-              key={key}
-              meeting={findPreviousMeeting(sortedData[key])}
-              nextMeeting={findNextMeeting(sortedData[key])}
-            />
-          );
+          const previousMeeting = findPreviousMeeting(sortedData[key]);
+
+          if(previousMeeting)
+          {
+            return (
+              <MeetingCard
+                key={key}
+                meeting={previousMeeting}
+                nextMeeting={findNextMeeting(sortedData[key])}
+              />
+            );
+          }
+
+          return undefined;
         })}
       </div>
     </div>

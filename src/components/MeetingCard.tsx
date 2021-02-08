@@ -1,7 +1,8 @@
 import React from "react";
+import { Meeting } from "../models";
 
 
-const getJurisdictionMeetingsPage = (jurisdiction, state) => {
+const getJurisdictionMeetingsPage = (jurisdiction: string, state: string) => {
   switch (jurisdiction)
   {
     case 'Mission':
@@ -17,7 +18,7 @@ const getJurisdictionMeetingsPage = (jurisdiction, state) => {
   }
 }
 
-const getJurisdictionLinkTitle = (jurisdiction, state) => {
+const getJurisdictionLinkTitle = (jurisdiction: string, state: string) => {
   switch (jurisdiction)
   {
     case 'Jackson':
@@ -33,6 +34,9 @@ const getJurisdictionLinkTitle = (jurisdiction, state) => {
 const MeetingCard = ({
   meeting,
   nextMeeting
+}: {
+  meeting: Meeting,
+  nextMeeting?: Meeting,
 }) => {
 
   return (

@@ -1,19 +1,25 @@
-import React, { Component } from "react";
+import React, { ChangeEvent, Component } from "react";
 import moment from "moment";
 
-import Datepicker from "@salesforce/design-system-react/components/date-picker";
+import { Datepicker, DatepickerDate } from "@salesforce/design-system-react";
 
-class DateFilter extends Component {
+type click = (event: any, data: any, ...any: any[]) => {};
+
+interface Props {
+  action?: (key: string) => click;
+};
+
+class DateFilter extends Component<Props> {
   state = {
     startValue: moment().subtract(30, "days"),
     endValue: moment(),
   };
 
   //Date Setters
-  handleStartChange(event, data) {
+  handleStartChange(event: ChangeEvent<HTMLInputElement>, data: DatepickerDate) {
     this.setState({ startValue: data.date });
   }
-  handleEndChange(event, data) {
+  handleEndChange(event: ChangeEvent<HTMLInputElement>, data: DatepickerDate) {
     this.setState({ value: data.date });
   }
 
@@ -38,7 +44,7 @@ class DateFilter extends Component {
             this.handleStartChange(event, data);
 
             if (this.props.action) {
-              const dataAsArray = Object.keys(data).map((key) => data[key]);
+              const dataAsArray = Object.values(data)
               this.props.action("onChange")(event, data, ...dataAsArray);
             } else if (console) {
               console.log("onChange", event, data);
@@ -46,7 +52,7 @@ class DateFilter extends Component {
           }}
           onCalendarFocus={(event, data) => {
             if (this.props.action) {
-              const dataAsArray = Object.keys(data).map((key) => data[key]);
+              const dataAsArray = Object.values(data)
               this.props.action("onCalendarFocus")(event, data, ...dataAsArray);
             } else if (console) {
               console.log("onCalendarFocus", event, data);
@@ -79,7 +85,7 @@ class DateFilter extends Component {
             this.handleEndChange(event, data);
 
             if (this.props.action) {
-              const dataAsArray = Object.keys(data).map((key) => data[key]);
+              const dataAsArray = Object.values(data);
               this.props.action("onChange")(event, data, ...dataAsArray);
             } else if (console) {
               console.log("onChange", event, data);
@@ -87,7 +93,7 @@ class DateFilter extends Component {
           }}
           onCalendarFocus={(event, data) => {
             if (this.props.action) {
-              const dataAsArray = Object.keys(data).map((key) => data[key]);
+              const dataAsArray = Object.values(data);
               this.props.action("onCalendarFocus")(event, data, ...dataAsArray);
             } else if (console) {
               console.log("onCalendarFocus", event, data);

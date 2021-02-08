@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { ChangeEvent, Component } from "react";
 
-import RadioButtonGroup from "@salesforce/design-system-react/components/radio-button-group";
-import Radio from "@salesforce/design-system-react/components/radio-button-group/radio";
-import Dropdown from "@salesforce/design-system-react/components/menu-dropdown";
+import { RadioButtonGroup }from "@salesforce/design-system-react";
+import { Radio } from "@salesforce/design-system-react";
+import { Dropdown } from "@salesforce/design-system-react";
 
 
 class JurisdictionFilter extends Component {
@@ -40,10 +40,9 @@ class JurisdictionFilter extends Component {
         </div>
         <RadioButtonGroup
           className="slds-col"
-          onChange={(event) =>
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
             this.setState({ stateChecked: event.target.value })
           }
-          style={{ margin: "0px 15px 15px 0px" }}
         >
           {stateFilter.map((stateFilter) => (
             <Radio

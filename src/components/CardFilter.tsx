@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React, { ChangeEvent, Component } from "react";
 
 import JurisdictionFilter from "./JurisdictionFilter";
 
 import DateFilter from "./DateFilter";
 
+import { Radio, RadioButtonGroup } from "@salesforce/design-system-react";
 
-import RadioButtonGroup from "@salesforce/design-system-react/components/radio-button-group";
-import Radio from "@salesforce/design-system-react/components/radio-button-group/radio";
-
-class CardFilter extends Component {
+class CardFilter extends Component<{}, { checked: string }> {
   state = {
     checked: "Date",
   };
@@ -43,8 +41,7 @@ class CardFilter extends Component {
           </div>
           <RadioButtonGroup
             className="slds-col"
-            onChange={(event) => this.setState({ checked: event.target.value })}
-            style={{ margin: "15px", width: "166px" }}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => this.setState({ checked: event.target.value })}
           >
             {filter.map((filter) => (
               <Radio
