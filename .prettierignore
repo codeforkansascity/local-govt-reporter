@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore public assets
+public
+
+# Ignore dependencies
+node_modules
