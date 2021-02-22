@@ -65,6 +65,7 @@ const MeetingCard = ({
               textAlign: 'left',
               paddingTop: '20px',
               paddingLeft: '15px',
+              paddingRight: '5px',
             }}
           >
             <p style={{ fontSize: '10pt', paddingBottom: '5px' }}>
@@ -81,7 +82,7 @@ const MeetingCard = ({
                 paddingTop: '5px',
               }}
             >
-              {meeting.MeetingType}
+              <a href={meeting.SourceURL}>{meeting.MeetingType}</a>
             </p>
           </div>
         )}
@@ -93,6 +94,7 @@ const MeetingCard = ({
               float: 'right',
               textAlign: 'left',
               paddingTop: '20px',
+              paddingRight: '5px',
             }}
           >
             <p style={{ fontSize: '10pt', paddingBottom: '5px' }}>
@@ -109,7 +111,7 @@ const MeetingCard = ({
                 paddingTop: '5px',
               }}
             >
-              {nextMeeting.MeetingType}
+              <a href={meeting.SourceURL}>{nextMeeting.MeetingType}</a>
             </p>
           </div>
         )}

@@ -3,4 +3,5 @@ export interface Meeting {
   State: string;
   MeetingDate: string;
   MeetingType: string;
+  SourceURL: string;
 }
