@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/local-govt-reporter/static/css/main.1d0d5f7a.chunk.css",
-    "main.js": "/local-govt-reporter/static/js/main.4e2d5823.chunk.js",
-    "main.js.map": "/local-govt-reporter/static/js/main.4e2d5823.chunk.js.map",
-    "runtime-main.js": "/local-govt-reporter/static/js/runtime-main.46db369f.js",
-    "runtime-main.js.map": "/local-govt-reporter/static/js/runtime-main.46db369f.js.map",
+    "main.css": "/local-govt-reporter/static/css/main.13e045fd.chunk.css",
+    "main.js": "/local-govt-reporter/static/js/main.e35ab4c6.chunk.js",
+    "main.js.map": "/local-govt-reporter/static/js/main.e35ab4c6.chunk.js.map",
+    "runtime-main.js": "/local-govt-reporter/static/js/runtime-main.76cc38f9.js",
+    "runtime-main.js.map": "/local-govt-reporter/static/js/runtime-main.76cc38f9.js.map",
     "static/css/2.8cebfa1f.chunk.css": "/local-govt-reporter/static/css/2.8cebfa1f.chunk.css",
-    "static/js/2.c3b24f72.chunk.js": "/local-govt-reporter/static/js/2.c3b24f72.chunk.js",
-    "static/js/2.c3b24f72.chunk.js.map": "/local-govt-reporter/static/js/2.c3b24f72.chunk.js.map",
-    "static/js/3.a92ab0e4.chunk.js": "/local-govt-reporter/static/js/3.a92ab0e4.chunk.js",
-    "static/js/3.a92ab0e4.chunk.js.map": "/local-govt-reporter/static/js/3.a92ab0e4.chunk.js.map",
+    "static/js/2.b2b5d0eb.chunk.js": "/local-govt-reporter/static/js/2.b2b5d0eb.chunk.js",
+    "static/js/2.b2b5d0eb.chunk.js.map": "/local-govt-reporter/static/js/2.b2b5d0eb.chunk.js.map",
+    "static/js/3.58d24fff.chunk.js": "/local-govt-reporter/static/js/3.58d24fff.chunk.js",
+    "static/js/3.58d24fff.chunk.js.map": "/local-govt-reporter/static/js/3.58d24fff.chunk.js.map",
     "index.html": "/local-govt-reporter/index.html",
     "static/css/2.8cebfa1f.chunk.css.map": "/local-govt-reporter/static/css/2.8cebfa1f.chunk.css.map",
-    "static/css/main.1d0d5f7a.chunk.css.map": "/local-govt-reporter/static/css/main.1d0d5f7a.chunk.css.map",
-    "static/js/2.c3b24f72.chunk.js.LICENSE.txt": "/local-govt-reporter/static/js/2.c3b24f72.chunk.js.LICENSE.txt"
+    "static/css/main.13e045fd.chunk.css.map": "/local-govt-reporter/static/css/main.13e045fd.chunk.css.map",
+    "static/js/2.b2b5d0eb.chunk.js.LICENSE.txt": "/local-govt-reporter/static/js/2.b2b5d0eb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.46db369f.js",
+    "static/js/runtime-main.76cc38f9.js",
     "static/css/2.8cebfa1f.chunk.css",
-    "static/js/2.c3b24f72.chunk.js",
-    "static/css/main.1d0d5f7a.chunk.css",
-    "static/js/main.4e2d5823.chunk.js"
+    "static/js/2.b2b5d0eb.chunk.js",
+    "static/css/main.13e045fd.chunk.css",
+    "static/js/main.e35ab4c6.chunk.js"
   ]
 }
