@@ -80,8 +80,10 @@ const getMeetingDates = (sortedData: MeetingHash) => {
 };
 
 const TopInfoBar = () => {
-  const { isLoading, error, data: meetings = [] } = useQuery('repoData', () =>
-    fetch(`${API_URL}/api/meetings`).then((res) => res.json())
+  const { isLoading, error, data: meetingData } = useQuery('repoData', () =>
+    fetch(`${API_URL}/api/meetings?start=0&length=100`).then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {
@@ -92,7 +94,7 @@ const TopInfoBar = () => {
     return <p>Failed to Fetch Data</p>;
   }
 
-  const sortedData = sortData(meetings);
+  const sortedData = sortData(meetingData.data);
   const meetingDates = getMeetingDates(sortedData);
 
   return (
