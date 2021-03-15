@@ -11,10 +11,14 @@ const CityInfoMeeting = () => {
       >
         <article
           className='slds-card slds-size_1-of-2'
-          style={{ float: 'left', paddingLeft: '15px' }}
+          style={{
+            float: 'left',
+            paddingLeft: '15px',
+            display: 'inline-block',
+          }}
         >
-          <div>Date and time</div>
-          <div>Location and Meeting Type</div>
+          <div style={{ float: 'left' }}>Date and time</div>
+          <div style={{ float: 'right' }}>Location and Meeting Type</div>
         </article>
         <article
           className='slds-card slds-size_1-of-2'
@@ -22,7 +26,6 @@ const CityInfoMeeting = () => {
         >
           <div>buttons</div>
         </article>
-        Meeting Data
       </article>
     </div>
   );
