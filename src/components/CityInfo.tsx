@@ -5,10 +5,16 @@ import { Button } from '@salesforce/design-system-react';
 
 const CityInfo = () => {
   return (
-    <div style={{ width: '1236px', marginLeft: 'auto', marginRight: 'auto' }}>
+    <div
+      style={{
+        width: '1236px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      }}
+    >
       <article
         className='slds-card'
-        style={{ display: 'inline-block', width: '100%', height: '265px' }}
+        style={{ display: 'inline-block', width: '100%', height: '255px' }}
       >
         <article
           className='slds-card slds-size_1-of-2'
@@ -28,7 +34,8 @@ const CityInfo = () => {
             variant='outline-brand'
             style={{
               color: 'blue',
-              position: 'absolute',
+              position: 'relative',
+              float: 'left',
               bottom: '15px',
               left: '15px',
               margin: '15px',
@@ -46,11 +53,29 @@ const CityInfo = () => {
         </article>
       </article>
       <article className='slds-card'>
-        <h1>Upcoming Meetings</h1>
+        <h2
+          style={{
+            fontSize: '24px',
+            fontWeight: 'bold',
+            textAlign: 'left',
+            padding: '30px',
+          }}
+        >
+          Upcoming Meetings
+        </h2>
         <CityInfoMeeting />
       </article>
       <article className='slds-card'>
-        <h1>Past Meetings</h1>
+        <h2
+          style={{
+            fontSize: '24px',
+            fontWeight: 'bold',
+            textAlign: 'left',
+            padding: '30px',
+          }}
+        >
+          Past Meetings
+        </h2>
         <CityInfoMeeting />
       </article>
     </div>
