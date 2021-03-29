@@ -79,11 +79,26 @@ const getMeetingDates = (sortedData: MeetingHash) => {
   }, {});
 };
 
+const generateDateRange = () => {
+  const startDate = new Date();
+  const endDate = new Date();
+
+  startDate.setDate(startDate.getDate() - 14);
+  endDate.setDate(endDate.getDate() + 30);
+  return {
+    startDate,
+    endDate,
+  };
+};
+
 const TopInfoBar = () => {
+  const { startDate, endDate } = generateDateRange();
   const { isLoading, error, data: meetingData } = useQuery('repoData', () =>
-    fetch(`${API_URL}/api/meetings?start=0&length=100`).then((res) =>
-      res.json()
-    )
+    fetch(
+      `${API_URL}/api/meetings?start=0&length=100&startDate=${startDate
+        .toISOString()
+        .substring(0, 10)}&endDate=${endDate.toISOString().substring(0, 10)}`
+    ).then((res) => res.json())
   );
 
   if (isLoading) {
