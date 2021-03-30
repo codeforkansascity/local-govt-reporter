@@ -113,23 +113,27 @@ const TopInfoBar = () => {
   const meetingDates = getMeetingDates(sortedData);
 
   return (
-    <div style={{ width: '1236px', marginLeft: 'auto', marginRight: 'auto' }}>
-      <div className='slds-grid slds-gutters'>
-        <div className='slds-col slds-size_2-of-3'>
-          <article
-            className='slds-card'
-            style={{
-              margin: '20px',
-              float: 'left',
-              width: '800px',
-              height: '215px',
-            }}
-          >
+    <div
+      style={{
+        width: '1236px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        paddingBottom: '50px',
+      }}
+    >
+      <div className='slds-grid' style={{ marginTop: '20px' }}>
+        <div
+          style={{
+            flexDirection: 'column',
+            display: 'flex',
+            marginRight: '10px',
+          }}
+        >
+          <article className='slds-card' style={{ flexGrow: 1 }}>
             <header className='slds-card__header'>
               <h1
                 style={{
                   fontSize: '20px',
-
                   fontFamily: 'Merriweather',
                   fontWeight: 'bold',
                 }}
@@ -147,14 +151,11 @@ const TopInfoBar = () => {
               </p>
               <footer>
                 <Button
-                  className='slds-button slds-button_brand '
+                  className='slds-button slds-button_brand'
                   variant='outline-brand'
                   style={{
                     color: 'blue',
-                    position: 'absolute',
-                    bottom: '15px',
-                    left: '15px',
-                    margin: '15px',
+                    marginTop: '40px',
                     fontSize: '12pt',
                   }}
                 >
@@ -167,12 +168,12 @@ const TopInfoBar = () => {
         </div>
 
         <article
-          className='slds-card slds-col slds-size_1-of-3'
+          className='slds-card'
           style={{
-            float: 'right',
-            width: '339px',
-            height: '375px',
-            margin: '20px',
+            padding: '0 20px 20px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
           }}
         >
           <header className='slds-card__header'>
@@ -199,7 +200,7 @@ const TopInfoBar = () => {
         </article>
       </div>
 
-      <div className='slds-grid slds-wrap'>
+      <div className='meetings slds-grid slds-wrap'>
         {Object.keys(sortedData).map((key) => {
           const previousMeeting = findPreviousMeeting(sortedData[key]);
 
