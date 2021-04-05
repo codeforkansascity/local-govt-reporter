@@ -3,11 +3,12 @@ import styles from './CardFilter.module.scss';
 
 import { Radio, RadioButtonGroup } from '@salesforce/design-system-react';
 
-class CardFilter extends Component<{}, { checked: string }> {
-  state = {
-    checked: 'Date',
-  };
+interface Props {
+  filter: string;
+  onFilterChange: ({ filter }: { filter: string }) => unknown;
+}
 
+class CardFilter extends Component<Props> {
   render() {
     const filter = ['Date', 'Jurisdiction'];
 
@@ -22,6 +23,7 @@ class CardFilter extends Component<{}, { checked: string }> {
               justifyContent: 'center',
               fontSize: '20px',
               fontFamily: 'Merriweather',
+              textAlign: 'center',
             }}
           >
             Group meetings by
@@ -30,7 +32,7 @@ class CardFilter extends Component<{}, { checked: string }> {
             <RadioButtonGroup
               className='slds-col'
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                this.setState({ checked: event.target.value })
+                this.props.onFilterChange({ filter: event.target.value })
               }
             >
               {filter.map((filter) => (
@@ -39,7 +41,7 @@ class CardFilter extends Component<{}, { checked: string }> {
                   id={filter}
                   labels={{ label: filter }}
                   value={filter}
-                  checked={this.state.checked === filter}
+                  checked={this.props.filter === filter}
                   variant='button-group'
                 />
               ))}

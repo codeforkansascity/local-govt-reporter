@@ -60,7 +60,7 @@ declare module '@salesforce/design-system-react' {
   export class Dropdown extends Component<DropdownProps> {}
 
   interface ButtonProps {
-    className: string | string[];
+    className?: string | string[];
     variant:
       | 'base'
       | 'link'
@@ -75,4 +75,12 @@ declare module '@salesforce/design-system-react' {
   }
 
   export class Button extends Component<ButtonProps> {}
+
+  interface CardProps {
+    className?: String;
+    style?: CSSProperties;
+    header?: React.ReactNode;
+  }
+
+  export class Card extends Component<CardProps> {}
 }

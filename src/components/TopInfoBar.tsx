@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { sortedIndexBy } from 'lodash';
 
@@ -11,6 +11,8 @@ import './TopInfoBar.scss';
 import { Button } from '@salesforce/design-system-react';
 import { useQuery } from 'react-query';
 import { Meeting } from '../models';
+import { MeetingRow } from './MeetingRow';
+import { MeetingGroups } from './MeetingGroups';
 
 interface MeetingHash {
   [key: string]: Meeting[];
@@ -65,6 +67,16 @@ const sortData = (data: Meeting[]) => {
   return hash;
 };
 
+const sortDataByDate = (data: Meeting[]) => {
+  return data.sort((meetingA, meetingB) => {
+    if (new Date(meetingA.MeetingDate) > new Date(meetingB.MeetingDate)) {
+      return 0;
+    }
+
+    return 1;
+  });
+};
+
 const getMeetingDates = (sortedData: MeetingHash) => {
   return Object.values(sortedData).reduce<MeetingHash>((dataHash, meetings) => {
     meetings.forEach((meeting) => {
@@ -92,6 +104,7 @@ const generateDateRange = () => {
 };
 
 const TopInfoBar = () => {
+  const [filterState, setFilterState] = useState('Date');
   const { startDate, endDate } = generateDateRange();
   const { isLoading, error, data: meetingData } = useQuery('repoData', () =>
     fetch(
@@ -111,6 +124,7 @@ const TopInfoBar = () => {
 
   const sortedData = sortData(meetingData.data);
   const meetingDates = getMeetingDates(sortedData);
+  const meetingSortDates = sortDataByDate(meetingData.data);
 
   return (
     <div
@@ -124,9 +138,9 @@ const TopInfoBar = () => {
       <div className='slds-grid' style={{ marginTop: '20px' }}>
         <div
           style={{
-            flexDirection: 'column',
             display: 'flex',
-            marginRight: '10px',
+            flexDirection: 'column',
+            marginRight: '20px',
           }}
         >
           <article className='slds-card' style={{ flexGrow: 1 }}>
@@ -142,7 +156,7 @@ const TopInfoBar = () => {
               </h1>
             </header>
             <div className='slds-card__body slds-card__body_inner'>
-              <p style={{ fontSize: '14px', textAlign: 'left' }}>
+              <p style={{ fontSize: '14px' }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
                 at porttitor sem. Aliquam erat volutpat. Donec placerat nisl
                 magna, et faucibus arcu condimentum sed.Lorem ipsum dolor sit
@@ -155,7 +169,7 @@ const TopInfoBar = () => {
                   variant='outline-brand'
                   style={{
                     color: 'blue',
-                    marginTop: '40px',
+                    marginTop: '20px',
                     fontSize: '12pt',
                   }}
                 >
@@ -164,7 +178,12 @@ const TopInfoBar = () => {
               </footer>
             </div>
           </article>
-          <CardFilter />
+          <CardFilter
+            onFilterChange={({ filter }) => {
+              setFilterState(filter);
+            }}
+            filter={filterState}
+          />
         </div>
 
         <article
@@ -199,24 +218,26 @@ const TopInfoBar = () => {
           />
         </article>
       </div>
+      {filterState == 'Jurisdiction' && (
+        <div className='meetings slds-grid slds-wrap'>
+          {Object.keys(sortedData).map((key) => {
+            const previousMeeting = findPreviousMeeting(sortedData[key]);
 
-      <div className='meetings slds-grid slds-wrap'>
-        {Object.keys(sortedData).map((key) => {
-          const previousMeeting = findPreviousMeeting(sortedData[key]);
+            if (previousMeeting) {
+              return (
+                <MeetingCard
+                  key={key}
+                  meeting={previousMeeting}
+                  nextMeeting={findNextMeeting(sortedData[key])}
+                />
+              );
+            }
 
-          if (previousMeeting) {
-            return (
-              <MeetingCard
-                key={key}
-                meeting={previousMeeting}
-                nextMeeting={findNextMeeting(sortedData[key])}
-              />
-            );
-          }
-
-          return undefined;
-        })}
-      </div>
+            return undefined;
+          })}
+        </div>
+      )}
+      {filterState == 'Date' && <MeetingGroups meetings={meetingSortDates} />}
     </div>
   );
 };
