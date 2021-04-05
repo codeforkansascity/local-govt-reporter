@@ -7,10 +7,10 @@ import { MeetingRow } from './MeetingRow';
 export const MeetingGroups = ({ meetings }: { meetings: Meeting[] }) => {
   const currentDate = new Date();
 
-  const previousMeetings = meetings.filter(
+  const upcomingMeetings = meetings.filter(
     (meeting) => new Date(meeting.MeetingDate) > currentDate
   );
-  const upcomingMeetings = meetings.filter(
+  const previousMeetings = meetings.filter(
     (meeting) => new Date(meeting.MeetingDate) < currentDate
   );
 
@@ -25,7 +25,7 @@ export const MeetingGroups = ({ meetings }: { meetings: Meeting[] }) => {
       >
         <div className={styles.meetingGroupContainer}>
           <div className={styles.meetingGroup}>
-            {previousMeetings.map((meeting) => (
+            {upcomingMeetings.map((meeting) => (
               <MeetingRow meeting={meeting} />
             ))}
           </div>
@@ -40,7 +40,7 @@ export const MeetingGroups = ({ meetings }: { meetings: Meeting[] }) => {
       >
         <div className={styles.meetingGroupContainer}>
           <div className={styles.meetingGroup}>
-            {upcomingMeetings.map((meeting) => (
+            {previousMeetings.map((meeting) => (
               <MeetingRow meeting={meeting} />
             ))}
           </div>

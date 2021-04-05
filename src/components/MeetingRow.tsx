@@ -2,7 +2,7 @@ import React from 'react';
 import { Meeting } from '../models';
 import styles from './MeetingRow.module.scss';
 import { Button } from '@salesforce/design-system-react';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import classnames from 'classnames';
 
 export const MeetingRow = ({
@@ -14,7 +14,7 @@ export const MeetingRow = ({
   return (
     <div className={styles.meetingRow}>
       <span className={classnames(styles.bold, styles.primaryText)}>{`${format(
-        new Date(meeting.MeetingDate),
+        parseISO(meeting.MeetingDate),
         'MMM d'
       )}`}</span>
       <span
