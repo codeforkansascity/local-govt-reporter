@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meeting } from '../models';
-import { Card } from '@salesforce/design-system-react';
+import { Button, Card } from '@salesforce/design-system-react';
 import styles from './MeetingGroups.module.scss';
 import { MeetingRow } from './MeetingRow';
 
@@ -26,7 +26,9 @@ export const MeetingGroups = ({ meetings }: { meetings: Meeting[] }) => {
         <div className={styles.meetingGroupContainer}>
           <div className={styles.meetingGroup}>
             {upcomingMeetings.map((meeting) => (
-              <MeetingRow meeting={meeting} />
+              <MeetingRow meeting={meeting}>
+                <Button variant='brand'>View All Meetings</Button>
+              </MeetingRow>
             ))}
           </div>
         </div>
@@ -41,7 +43,9 @@ export const MeetingGroups = ({ meetings }: { meetings: Meeting[] }) => {
         <div className={styles.meetingGroupContainer}>
           <div className={styles.meetingGroup}>
             {previousMeetings.map((meeting) => (
-              <MeetingRow meeting={meeting} />
+              <MeetingRow meeting={meeting}>
+                <Button variant='brand'>View All Meetings</Button>
+              </MeetingRow>
             ))}
           </div>
         </div>

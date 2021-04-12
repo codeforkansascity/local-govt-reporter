@@ -11,7 +11,6 @@ import './TopInfoBar.scss';
 import { Button } from '@salesforce/design-system-react';
 import { useQuery } from 'react-query';
 import { Meeting } from '../models';
-import { MeetingRow } from './MeetingRow';
 import { MeetingGroups } from './MeetingGroups';
 
 interface MeetingHash {
@@ -218,7 +217,7 @@ const TopInfoBar = () => {
           />
         </article>
       </div>
-      {filterState == 'Jurisdiction' && (
+      {filterState === 'Jurisdiction' && (
         <div className='meetings slds-grid slds-wrap'>
           {Object.keys(sortedData).map((key) => {
             const previousMeeting = findPreviousMeeting(sortedData[key]);
@@ -237,7 +236,7 @@ const TopInfoBar = () => {
           })}
         </div>
       )}
-      {filterState == 'Date' && <MeetingGroups meetings={meetingSortDates} />}
+      {filterState === 'Date' && <MeetingGroups meetings={meetingSortDates} />}
     </div>
   );
 };

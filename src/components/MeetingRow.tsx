@@ -1,15 +1,17 @@
 import React from 'react';
 import { Meeting } from '../models';
 import styles from './MeetingRow.module.scss';
-import { Button } from '@salesforce/design-system-react';
 import { format, parseISO } from 'date-fns';
 import classnames from 'classnames';
 
 export const MeetingRow = ({
   meeting,
+  hideJurisdiction = false,
+  children,
 }: {
   meeting: Meeting;
-  nextMeeting?: Meeting;
+  hideJurisdiction?: boolean;
+  children?: React.ReactNode;
 }) => {
   return (
     <div className={styles.meetingRow}>
@@ -17,13 +19,13 @@ export const MeetingRow = ({
         parseISO(meeting.MeetingDate),
         'MMM d'
       )}`}</span>
-      <span
-        className={classnames(styles.bold, styles.primaryText)}
-      >{`${meeting.Jurisdiction}`}</span>
+      {!hideJurisdiction && (
+        <span
+          className={classnames(styles.bold, styles.primaryText)}
+        >{`${meeting.Jurisdiction}`}</span>
+      )}
       <span className={styles.jurisdiction}>{`${meeting.MeetingType}`}</span>
-      <span className={styles.meetingActions}>
-        <Button variant='brand'>View All Meetings</Button>
-      </span>
+      <span className={styles.meetingActions}>{children}</span>
     </div>
   );
 };
