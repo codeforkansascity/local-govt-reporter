@@ -1,12 +1,18 @@
 import React, { ChangeEvent, Component } from 'react';
 import moment from 'moment';
 
-import { Datepicker, DatepickerDate } from '@salesforce/design-system-react';
+import { Datepicker } from '@salesforce/design-system-react';
 
 type click = (event: any, data: any, ...any: any[]) => {};
 
 interface Props {
   action?: (key: string) => click;
+}
+
+interface DatepickerDate {
+  date: Date;
+  formattedDate: [string];
+  timezoneOffset: [number];
 }
 
 class DateFilter extends Component<Props> {
@@ -43,7 +49,10 @@ class DateFilter extends Component<Props> {
 
         <Datepicker
           className='slds-col'
-          onChange={(event, data) => {
+          onChange={(
+            event: ChangeEvent<HTMLInputElement>,
+            data: DatepickerDate
+          ) => {
             this.handleStartChange(event, data);
 
             if (this.props.action) {
@@ -53,18 +62,19 @@ class DateFilter extends Component<Props> {
               console.log('onChange', event, data);
             }
           }}
-          onCalendarFocus={(event, data) => {
+          onCalendarFocus={(
+            event: ChangeEvent<HTMLInputElement>,
+            data: DatepickerDate
+          ) => {
             if (this.props.action) {
               const dataAsArray = Object.values(data);
               this.props.action('onCalendarFocus')(event, data, ...dataAsArray);
-            } else if (console) {
-              console.log('onCalendarFocus', event, data);
             }
           }}
-          formatter={(date) => {
+          formatter={(date: Date) => {
             return date ? moment(date).format('M/D/YYYY') : '';
           }}
-          parser={(dateString) => {
+          parser={(dateString: string) => {
             return moment(dateString, 'MM-DD-YYYY').toDate();
           }}
           value={this.state.startValue}
@@ -84,7 +94,10 @@ class DateFilter extends Component<Props> {
 
         <Datepicker
           className='slds-col'
-          onChange={(event, data) => {
+          onChange={(
+            event: ChangeEvent<HTMLInputElement>,
+            data: DatepickerDate
+          ) => {
             this.handleEndChange(event, data);
 
             if (this.props.action) {
@@ -94,7 +107,10 @@ class DateFilter extends Component<Props> {
               console.log('onChange', event, data);
             }
           }}
-          onCalendarFocus={(event, data) => {
+          onCalendarFocus={(
+            event: ChangeEvent<HTMLInputElement>,
+            data: DatepickerDate
+          ) => {
             if (this.props.action) {
               const dataAsArray = Object.values(data);
               this.props.action('onCalendarFocus')(event, data, ...dataAsArray);
@@ -102,10 +118,10 @@ class DateFilter extends Component<Props> {
               console.log('onCalendarFocus', event, data);
             }
           }}
-          formatter={(date) => {
+          formatter={(date: Date) => {
             return date ? moment(date).format('M/D/YYYY') : '';
           }}
-          parser={(dateString) => {
+          parser={(dateString: string) => {
             return moment(dateString, 'MM-DD-YYYY').toDate();
           }}
           value={this.state.endValue}

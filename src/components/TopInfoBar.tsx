@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { sortedIndexBy } from 'lodash';
+import { isArray, sortedIndexBy } from 'lodash';
 
 import MeetingCard from './MeetingCard';
 import CardFilter from './CardFilter';
@@ -8,10 +8,12 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
 import './TopInfoBar.scss';
-import { Button } from '@salesforce/design-system-react';
+import { Button, Popover } from '@salesforce/design-system-react';
 import { useQuery } from 'react-query';
 import { Meeting } from '../models';
 import { MeetingGroups } from './MeetingGroups';
+import classNames from 'classnames';
+import { format, parseISO } from 'date-fns';
 
 interface MeetingHash {
   [key: string]: Meeting[];
@@ -104,6 +106,7 @@ const generateDateRange = () => {
 
 const TopInfoBar = () => {
   const [filterState, setFilterState] = useState('Date');
+  const [selectedDate, setSelectedDate] = useState<Date>();
   const { startDate, endDate } = generateDateRange();
   const { isLoading, error, data: meetingData } = useQuery('repoData', () =>
     fetch(
@@ -206,14 +209,72 @@ const TopInfoBar = () => {
             </h1>
           </header>
           <Calendar
+            value={selectedDate}
+            onChange={(value) => !isArray(value) && setSelectedDate(value)}
             calendarType='US'
             tileClassName={({ activeStartDate, date, view }) => {
               if (meetingDates[date.toISOString().substring(0, 10)]) {
-                return 'meeting-date';
+                return classNames(
+                  'meeting-date',
+                  `date-${date.toISOString().substring(0, 10)}`
+                );
               }
 
-              return null;
+              return classNames(
+                'disabled-date',
+                `date-${date.toISOString().substring(0, 10)}`
+              );
             }}
+            tileDisabled={(props) =>
+              meetingDates[props.date.toISOString().substring(0, 10)] ===
+              undefined
+            }
+          />
+          <Popover
+            className='something'
+            style={{ border: 'none', borderRadius: 0 }}
+            key={selectedDate?.toISOString() || ''}
+            isOpen={selectedDate !== undefined}
+            hasNoCloseButton
+            classNameBody='popover-body'
+            body={
+              selectedDate && (
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <Button
+                    className='button-styles'
+                    style={{ marginLeft: 'auto', float: 'right' }}
+                    variant='base'
+                    onClick={() => {
+                      setSelectedDate(undefined);
+                    }}
+                  >
+                    X
+                  </Button>
+                  <div>
+                    {(
+                      meetingDates[
+                        selectedDate.toISOString().substring(0, 10)
+                      ] ?? []
+                    )?.map((value) => (
+                      <div style={{ marginBottom: 16 }}>
+                        <h1 className='popover-meeting-header'>{`${format(
+                          parseISO(value.MeetingDate),
+                          'MMM d'
+                        )} ${value.Jurisdiction}`}</h1>
+                        <em>{value.MeetingType}</em>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )
+            }
+            id='popover-heading'
+            onRequestTargetElement={() =>
+              selectedDate &&
+              document.querySelector(
+                `.date-${selectedDate?.toISOString().substring(0, 10)}`
+              )
+            }
           />
         </article>
       </div>
