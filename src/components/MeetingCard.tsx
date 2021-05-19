@@ -36,17 +36,12 @@ const MeetingCard = ({
   nextMeeting?: Meeting;
 }) => {
   return (
-    <article
-      className='slds-card slds-col slds-size_1-of-2'
-      style={{ height: '300px', width: '578px', float: 'left', margin: '20px' }}
-    >
+    <article className='slds-card'>
       <header className='slds-card__header'>
         <h2
           className='slds-card__header-title'
           style={{
             fontSize: '24px',
-            paddingTop: '10px',
-            paddingLeft: '15px',
             fontFamily: 'Merriweather',
             fontWeight: 'bold',
           }}
@@ -61,11 +56,12 @@ const MeetingCard = ({
           <div
             style={{
               width: '50%',
+              height: '215px',
               float: 'left',
               textAlign: 'left',
               paddingTop: '20px',
               paddingLeft: '15px',
-              paddingRight: '5px',
+              paddingRight: '20px',
             }}
           >
             <p style={{ fontSize: '10pt', paddingBottom: '5px' }}>

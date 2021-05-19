@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { sortedIndexBy } from 'lodash';
 
@@ -11,6 +11,7 @@ import './TopInfoBar.scss';
 import { Button } from '@salesforce/design-system-react';
 import { useQuery } from 'react-query';
 import { Meeting } from '../models';
+import { MeetingGroups } from './MeetingGroups';
 
 interface MeetingHash {
   [key: string]: Meeting[];
@@ -65,6 +66,16 @@ const sortData = (data: Meeting[]) => {
   return hash;
 };
 
+const sortDataByDate = (data: Meeting[]) => {
+  return data.sort((meetingA, meetingB) => {
+    if (new Date(meetingA.MeetingDate) > new Date(meetingB.MeetingDate)) {
+      return 0;
+    }
+
+    return 1;
+  });
+};
+
 const getMeetingDates = (sortedData: MeetingHash) => {
   return Object.values(sortedData).reduce<MeetingHash>((dataHash, meetings) => {
     meetings.forEach((meeting) => {
@@ -79,11 +90,27 @@ const getMeetingDates = (sortedData: MeetingHash) => {
   }, {});
 };
 
+const generateDateRange = () => {
+  const startDate = new Date();
+  const endDate = new Date();
+
+  startDate.setDate(startDate.getDate() - 14);
+  endDate.setDate(endDate.getDate() + 30);
+  return {
+    startDate,
+    endDate,
+  };
+};
+
 const TopInfoBar = () => {
+  const [filterState, setFilterState] = useState('Date');
+  const { startDate, endDate } = generateDateRange();
   const { isLoading, error, data: meetingData } = useQuery('repoData', () =>
-    fetch(`${API_URL}/api/meetings?start=0&length=100`).then((res) =>
-      res.json()
-    )
+    fetch(
+      `${API_URL}/api/meetings?start=0&length=100&startDate=${startDate
+        .toISOString()
+        .substring(0, 10)}&endDate=${endDate.toISOString().substring(0, 10)}`
+    ).then((res) => res.json())
   );
 
   if (isLoading) {
@@ -96,25 +123,30 @@ const TopInfoBar = () => {
 
   const sortedData = sortData(meetingData.data);
   const meetingDates = getMeetingDates(sortedData);
+  const meetingSortDates = sortDataByDate(meetingData.data);
 
   return (
-    <div style={{ width: '1236px', marginLeft: 'auto', marginRight: 'auto' }}>
-      <div className='slds-grid slds-gutters'>
-        <div className='slds-col slds-size_2-of-3'>
-          <article
-            className='slds-card'
-            style={{
-              margin: '20px',
-              float: 'left',
-              width: '800px',
-              height: '215px',
-            }}
-          >
+    <div
+      style={{
+        width: '1236px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        paddingBottom: '50px',
+      }}
+    >
+      <div className='slds-grid' style={{ marginTop: '20px' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            marginRight: '20px',
+          }}
+        >
+          <article className='slds-card' style={{ flexGrow: 1 }}>
             <header className='slds-card__header'>
               <h1
                 style={{
                   fontSize: '20px',
-
                   fontFamily: 'Merriweather',
                   fontWeight: 'bold',
                 }}
@@ -123,7 +155,7 @@ const TopInfoBar = () => {
               </h1>
             </header>
             <div className='slds-card__body slds-card__body_inner'>
-              <p style={{ fontSize: '14px', textAlign: 'left' }}>
+              <p style={{ fontSize: '14px' }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
                 at porttitor sem. Aliquam erat volutpat. Donec placerat nisl
                 magna, et faucibus arcu condimentum sed.Lorem ipsum dolor sit
@@ -132,14 +164,11 @@ const TopInfoBar = () => {
               </p>
               <footer>
                 <Button
-                  className='slds-button slds-button_brand '
+                  className='slds-button slds-button_brand'
                   variant='outline-brand'
                   style={{
                     color: 'blue',
-                    position: 'absolute',
-                    bottom: '15px',
-                    left: '15px',
-                    margin: '15px',
+                    marginTop: '20px',
                     fontSize: '12pt',
                   }}
                 >
@@ -148,16 +177,21 @@ const TopInfoBar = () => {
               </footer>
             </div>
           </article>
-          <CardFilter />
+          <CardFilter
+            onFilterChange={({ filter }) => {
+              setFilterState(filter);
+            }}
+            filter={filterState}
+          />
         </div>
 
         <article
-          className='slds-card slds-col slds-size_1-of-3'
+          className='slds-card'
           style={{
-            float: 'right',
-            width: '339px',
-            height: '375px',
-            margin: '20px',
+            padding: '0 20px 20px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
           }}
         >
           <header className='slds-card__header'>
@@ -183,24 +217,26 @@ const TopInfoBar = () => {
           />
         </article>
       </div>
+      {filterState === 'Jurisdiction' && (
+        <div className='meetings slds-grid slds-wrap'>
+          {Object.keys(sortedData).map((key) => {
+            const previousMeeting = findPreviousMeeting(sortedData[key]);
 
-      <div className='slds-grid slds-wrap'>
-        {Object.keys(sortedData).map((key) => {
-          const previousMeeting = findPreviousMeeting(sortedData[key]);
+            if (previousMeeting) {
+              return (
+                <MeetingCard
+                  key={key}
+                  meeting={previousMeeting}
+                  nextMeeting={findNextMeeting(sortedData[key])}
+                />
+              );
+            }
 
-          if (previousMeeting) {
-            return (
-              <MeetingCard
-                key={key}
-                meeting={previousMeeting}
-                nextMeeting={findNextMeeting(sortedData[key])}
-              />
-            );
-          }
-
-          return undefined;
-        })}
-      </div>
+            return undefined;
+          })}
+        </div>
+      )}
+      {filterState === 'Date' && <MeetingGroups meetings={meetingSortDates} />}
     </div>
   );
 };

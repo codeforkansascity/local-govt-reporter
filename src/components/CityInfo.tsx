@@ -1,5 +1,6 @@
 import React from 'react';
 import CityInfoMeeting from './CityInfoMeeting';
+import { MeetingRow } from './MeetingRow';
 
 import { Button } from '@salesforce/design-system-react';
 
@@ -16,26 +17,14 @@ const CityInfo = () => {
         className='slds-card'
         style={{ display: 'inline-block', width: '100%', height: '255px' }}
       >
-        <article
-          className='slds-card slds-size_1-of-2'
-          style={{ float: 'left', paddingLeft: '15px' }}
-        >
-          <h1 style={{ fontSize: '26pt', textAlign: 'left', padding: '15px' }}>
-            Kansas City, MO
-          </h1>
-          <p style={{ fontSize: '12pt', textAlign: 'left', padding: '15px' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
-            porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et
-            faucibus arcu condimentum sed.Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit.
-          </p>
+        <h1 style={{ fontSize: '26pt', textAlign: 'left', padding: '15px' }}>
+          Kansas City, MO
           <Button
             className='slds-button slds-button_brand '
             variant='outline-brand'
             style={{
               color: 'blue',
               position: 'relative',
-              float: 'left',
               bottom: '15px',
               left: '15px',
               margin: '15px',
@@ -44,12 +33,12 @@ const CityInfo = () => {
           >
             Visit City Council Website
           </Button>
-        </article>
+        </h1>
         <article
           className='slds-card slds-size_1-of-2'
           style={{ float: 'right' }}
         >
-          Meet the Council
+          Contact the Council
         </article>
       </article>
       <article className='slds-card'>

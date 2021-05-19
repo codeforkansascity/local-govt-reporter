@@ -1,0 +1,33 @@
+.meetingRow {
+  display: table-row;
+
+  &:not(:last-child) {
+    border-bottom: rgb(222, 222, 222) solid 2px;
+  }
+
+  > * {
+    display: table-cell;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    &:not(:last-child) {
+      padding-right: 20px;
+    }
+  }
+}
+
+.meetingActions {
+  text-align: right;
+}
+
+.jurisdiction {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.primaryText {
+  font-family: Merriweather;
+}
