@@ -1,0 +1,22 @@
+.NavBarMain {
+  padding: 0;
+  border-bottom: none;
+  height: auto;
+}
+
+.NavContainer {
+  display: flex;
+  flex-direction: row;
+
+  > li {
+    padding-top: 20px;
+    padding-bottom: 18px;
+    &::before {
+      background-color: transparent !important;
+    }
+  }
+}
+
+.PrimaryNav {
+  margin-left: auto;
+}

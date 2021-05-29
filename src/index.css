@@ -1,5 +1,14 @@
 html {
-  background-color: '#ffffff';
+  background-color: #f3f8fc;
+}
+
+:root {
+  --sds-c-button-brand-color-background: rgb(43, 104, 134);
+  --sds-c-button-brand-color-background-hover: rgb(32, 75, 97);
+  --sds-c-button-text-color: black;
+  --sds-c-button-text-color-hover: rgb(43, 104, 134);
+  --sds-c-button-outline-brand-color-border: rgb(43, 104, 134);
+  --sds-c-button-outline-brand-color-border-hover: rgb(43, 104, 134);
 }
 
 body {
@@ -14,4 +23,19 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.slds-radio--button [type='radio']:checked + .slds-radio--button__label,
+.slds-radio--button [type='radio']:checked + .slds-radio--faux,
+.slds-radio--button [type='radio']:checked + .slds-radio_button__label,
+.slds-radio--button [type='radio']:checked + .slds-radio_faux,
+.slds-radio--button [type='radio']:checked ~ .slds-radio--faux,
+.slds-radio--button [type='radio']:checked ~ .slds-radio_faux,
+.slds-radio_button [type='radio']:checked + .slds-radio--button__label,
+.slds-radio_button [type='radio']:checked + .slds-radio--faux,
+.slds-radio_button [type='radio']:checked + .slds-radio_button__label,
+.slds-radio_button [type='radio']:checked + .slds-radio_faux,
+.slds-radio_button [type='radio']:checked ~ .slds-radio--faux,
+.slds-radio_button [type='radio']:checked ~ .slds-radio_faux {
+  background-color: rgb(43, 104, 134);
 }

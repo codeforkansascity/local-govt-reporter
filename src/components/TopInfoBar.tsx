@@ -14,6 +14,7 @@ import { Meeting } from '../models';
 import { MeetingGroups } from './MeetingGroups';
 import classNames from 'classnames';
 import { format, parseISO } from 'date-fns';
+import { AppContainer } from './AppContainer';
 
 interface MeetingHash {
   [key: string]: Meeting[];
@@ -129,23 +130,75 @@ const TopInfoBar = () => {
   const meetingSortDates = sortDataByDate(meetingData.data);
 
   return (
-    <div
-      style={{
-        width: '1236px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        paddingBottom: '50px',
-      }}
-    >
-      <div className='slds-grid' style={{ marginTop: '20px' }}>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            marginRight: '20px',
-          }}
-        >
-          <article className='slds-card' style={{ flexGrow: 1 }}>
+    <AppContainer>
+      <div
+        style={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          paddingBottom: '50px',
+        }}
+      >
+        <div className='slds-grid' style={{ marginTop: '20px' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              marginRight: '20px',
+            }}
+          >
+            <article className='slds-card' style={{ flexGrow: 1 }}>
+              <header className='slds-card__header'>
+                <h1
+                  style={{
+                    fontSize: '20px',
+                    fontFamily: 'Merriweather',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Find local meetings and meeting minutes
+                </h1>
+              </header>
+              <div className='slds-card__body slds-card__body_inner'>
+                <p style={{ fontSize: '14px' }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aliquam at porttitor sem. Aliquam erat volutpat. Donec
+                  placerat nisl magna, et faucibus arcu condimentum sed.Lorem
+                  ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
+                  porttitor sem. Aliquam erat volutpat. Donec placerat nisl
+                  magna, et faucibus.
+                </p>
+                <footer>
+                  <Button
+                    className='slds-button slds-button_brand'
+                    variant='outline-brand'
+                    style={{
+                      color: 'rgb(43, 104, 134)',
+                      marginTop: '20px',
+                      fontSize: '12pt',
+                    }}
+                  >
+                    Need more help?
+                  </Button>
+                </footer>
+              </div>
+            </article>
+            <CardFilter
+              onFilterChange={({ filter }) => {
+                setFilterState(filter);
+              }}
+              filter={filterState}
+            />
+          </div>
+
+          <article
+            className='slds-card'
+            style={{
+              padding: '0 20px 20px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
             <header className='slds-card__header'>
               <h1
                 style={{
@@ -154,151 +207,103 @@ const TopInfoBar = () => {
                   fontWeight: 'bold',
                 }}
               >
-                Find local meetings and meeting minutes
+                Upcoming Meetings
               </h1>
             </header>
-            <div className='slds-card__body slds-card__body_inner'>
-              <p style={{ fontSize: '14px' }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                at porttitor sem. Aliquam erat volutpat. Donec placerat nisl
-                magna, et faucibus arcu condimentum sed.Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit. Aliquam at porttitor sem.
-                Aliquam erat volutpat. Donec placerat nisl magna, et faucibus.
-              </p>
-              <footer>
-                <Button
-                  className='slds-button slds-button_brand'
-                  variant='outline-brand'
-                  style={{
-                    color: 'blue',
-                    marginTop: '20px',
-                    fontSize: '12pt',
-                  }}
-                >
-                  Need more help?
-                </Button>
-              </footer>
-            </div>
-          </article>
-          <CardFilter
-            onFilterChange={({ filter }) => {
-              setFilterState(filter);
-            }}
-            filter={filterState}
-          />
-        </div>
+            <Calendar
+              value={selectedDate}
+              onChange={(value) => !isArray(value) && setSelectedDate(value)}
+              calendarType='US'
+              tileClassName={({ activeStartDate, date, view }) => {
+                if (meetingDates[date.toISOString().substring(0, 10)]) {
+                  return classNames(
+                    'meeting-date',
+                    `date-${date.toISOString().substring(0, 10)}`
+                  );
+                }
 
-        <article
-          className='slds-card'
-          style={{
-            padding: '0 20px 20px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <header className='slds-card__header'>
-            <h1
-              style={{
-                fontSize: '20px',
-                fontFamily: 'Merriweather',
-                fontWeight: 'bold',
-              }}
-            >
-              Upcoming Meetings
-            </h1>
-          </header>
-          <Calendar
-            value={selectedDate}
-            onChange={(value) => !isArray(value) && setSelectedDate(value)}
-            calendarType='US'
-            tileClassName={({ activeStartDate, date, view }) => {
-              if (meetingDates[date.toISOString().substring(0, 10)]) {
                 return classNames(
-                  'meeting-date',
+                  'disabled-date',
                   `date-${date.toISOString().substring(0, 10)}`
+                );
+              }}
+              tileDisabled={(props) =>
+                meetingDates[props.date.toISOString().substring(0, 10)] ===
+                undefined
+              }
+            />
+            <Popover
+              className='something'
+              style={{ border: 'none', borderRadius: 0 }}
+              key={selectedDate?.toISOString() || ''}
+              isOpen={selectedDate !== undefined}
+              hasNoCloseButton
+              classNameBody='popover-body'
+              body={
+                selectedDate && (
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Button
+                      className='button-styles'
+                      style={{ marginLeft: 'auto', float: 'right' }}
+                      variant='base'
+                      onClick={() => {
+                        setSelectedDate(undefined);
+                      }}
+                    >
+                      X
+                    </Button>
+                    <div>
+                      {(
+                        meetingDates[
+                          selectedDate.toISOString().substring(0, 10)
+                        ] ?? []
+                      )?.map((value) => (
+                        <div style={{ marginBottom: 16 }}>
+                          <h1 className='popover-meeting-header'>{`${format(
+                            parseISO(value.MeetingDate),
+                            'MMM d'
+                          )} ${value.Jurisdiction}`}</h1>
+                          <em>{value.MeetingType}</em>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+              id='popover-heading'
+              onRequestTargetElement={() =>
+                selectedDate &&
+                document.querySelector(
+                  `.date-${selectedDate?.toISOString().substring(0, 10)}`
+                )
+              }
+            />
+          </article>
+        </div>
+        {filterState === 'Jurisdiction' && (
+          <div className='meetings slds-grid slds-wrap'>
+            {Object.keys(sortedData).map((key) => {
+              const previousMeeting = findPreviousMeeting(sortedData[key]);
+
+              if (previousMeeting) {
+                return (
+                  <MeetingCard
+                    key={key}
+                    meeting={previousMeeting}
+                    nextMeeting={findNextMeeting(sortedData[key])}
+                  />
                 );
               }
 
-              return classNames(
-                'disabled-date',
-                `date-${date.toISOString().substring(0, 10)}`
-              );
-            }}
-            tileDisabled={(props) =>
-              meetingDates[props.date.toISOString().substring(0, 10)] ===
-              undefined
-            }
-          />
-          <Popover
-            className='something'
-            style={{ border: 'none', borderRadius: 0 }}
-            key={selectedDate?.toISOString() || ''}
-            isOpen={selectedDate !== undefined}
-            hasNoCloseButton
-            classNameBody='popover-body'
-            body={
-              selectedDate && (
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <Button
-                    className='button-styles'
-                    style={{ marginLeft: 'auto', float: 'right' }}
-                    variant='base'
-                    onClick={() => {
-                      setSelectedDate(undefined);
-                    }}
-                  >
-                    X
-                  </Button>
-                  <div>
-                    {(
-                      meetingDates[
-                        selectedDate.toISOString().substring(0, 10)
-                      ] ?? []
-                    )?.map((value) => (
-                      <div style={{ marginBottom: 16 }}>
-                        <h1 className='popover-meeting-header'>{`${format(
-                          parseISO(value.MeetingDate),
-                          'MMM d'
-                        )} ${value.Jurisdiction}`}</h1>
-                        <em>{value.MeetingType}</em>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )
-            }
-            id='popover-heading'
-            onRequestTargetElement={() =>
-              selectedDate &&
-              document.querySelector(
-                `.date-${selectedDate?.toISOString().substring(0, 10)}`
-              )
-            }
-          />
-        </article>
+              return undefined;
+            })}
+          </div>
+        )}
+        {filterState === 'Date' && (
+          <MeetingGroups meetings={meetingSortDates} />
+        )}
       </div>
-      {filterState === 'Jurisdiction' && (
-        <div className='meetings slds-grid slds-wrap'>
-          {Object.keys(sortedData).map((key) => {
-            const previousMeeting = findPreviousMeeting(sortedData[key]);
-
-            if (previousMeeting) {
-              return (
-                <MeetingCard
-                  key={key}
-                  meeting={previousMeeting}
-                  nextMeeting={findNextMeeting(sortedData[key])}
-                />
-              );
-            }
-
-            return undefined;
-          })}
-        </div>
-      )}
-      {filterState === 'Date' && <MeetingGroups meetings={meetingSortDates} />}
-    </div>
+    </AppContainer>
   );
 };
 
