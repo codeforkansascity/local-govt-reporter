@@ -1,6 +1,5 @@
 import React from 'react';
 import CityInfoMeeting from './CityInfoMeeting';
-import { MeetingRow } from './MeetingRow';
 
 import { Button } from '@salesforce/design-system-react';
 

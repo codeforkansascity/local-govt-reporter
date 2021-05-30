@@ -1,0 +1,91 @@
+.OddSection {
+  background-color: #ffffff;
+  min-height: 300px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+.MidSection {
+  min-height: 300;
+  min-height: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.MidSectionHeader {
+  text-align: center;
+}
+
+.MidSectionGrid {
+  display: flex;
+  justify-content: space-between;
+  max-height: 200;
+}
+
+.MidSectionDescription {
+  font-size: 1.5em;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.FontTwo {
+  font-family: Merriweather;
+}
+
+.MidImageContainer {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.MidImage {
+  height: 200px;
+  border-radius: 10px;
+}
+
+.BaseSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.BaseSectionImage {
+  height: 472px;
+  border-radius: 10px;
+}
+
+.BaseSectionText {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.Footer {
+  background-color: rgb(15, 34, 56);
+  color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.FooterLink {
+  color: #ffffff;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.TopText {
+  max-width: 60%;
+  position: relative;
+  z-index: 2;
+}
+
+.TopImage {
+  position: absolute;
+  z-index: 1;
+  top: 10%;
+  height: 80%;
+  right: 5%;
+  border-radius: 10px;
+}

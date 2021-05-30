@@ -9,10 +9,10 @@ import {
 import './App.css';
 import TopInfoBar from './components/TopInfoBar';
 import About from './components/About';
-import CityInfo from './components/CityInfo';
 import NavBar from './components/NavBar';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { HomePage } from './components/HomePage';
 
 const queryClient = new QueryClient();
 
@@ -24,10 +24,9 @@ function App() {
         <div className='App'>
           <Switch>
             <Redirect exact from='/' to='/home' />
-            <Route exact path='/home' component={TopInfoBar} />
+            <Route exact path='/home' component={HomePage} />
             <Route exact path='/about' component={About} />
-            <Route exact path='/info' component={CityInfo} />
-
+            <Route exact path='/news' component={TopInfoBar} />
             <Route render={() => <h1>404</h1>} />
           </Switch>
         </div>

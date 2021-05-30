@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Button } from '@salesforce/design-system-react';
-
 const CityInfoMeeting = () => {
   return (
     <div style={{ width: '1236px', marginLeft: 'auto', marginRight: 'auto' }}>

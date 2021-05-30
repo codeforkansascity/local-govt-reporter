@@ -1,11 +1,12 @@
 import React from 'react';
+import { Spacer } from './Spacer';
 
 interface Props {
-  children?: React.ReactElement;
+  children?: React.ReactElement | React.ReactElement[];
 }
 
 export const AppContainer = ({ children, ...customProps }: Props) => (
-  <div style={{ paddingLeft: '40px', paddingRight: '40px' }} {...customProps}>
+  <Spacer left={2} right={2} {...customProps}>
     {children}
-  </div>
+  </Spacer>
 );
