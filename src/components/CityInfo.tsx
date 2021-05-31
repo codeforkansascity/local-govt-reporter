@@ -1,73 +1,150 @@
 import React from 'react';
-import CityInfoMeeting from './CityInfoMeeting';
+import styles from './CityInfo.module.scss';
 
 import { Button } from '@salesforce/design-system-react';
+import { API_URL, generateDateRange } from './TopInfoBar';
+import { useQuery } from 'react-query';
+import { AppContainer } from './AppContainer';
+import { useParams } from 'react-router-dom';
+import { MeetingRow } from './MeetingRow';
+import { Typography } from './Typography';
+import { Spacer } from './Spacer';
+import { Meeting } from '../models';
+import { getJurisdictionMeetingsPage } from './utils';
 
-const CityInfo = () => {
-  return (
-    <div
-      style={{
-        width: '1236px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      }}
-    >
-      <article
-        className='slds-card'
-        style={{ display: 'inline-block', width: '100%', height: '255px' }}
-      >
-        <h1 style={{ fontSize: '26pt', textAlign: 'left', padding: '15px' }}>
-          Kansas City, MO
-          <Button
-            className='slds-button slds-button_brand '
-            variant='outline-brand'
-            style={{
-              color: 'blue',
-              position: 'relative',
-              bottom: '15px',
-              left: '15px',
-              margin: '15px',
-              fontSize: '12pt',
-            }}
-          >
-            Visit City Council Website
-          </Button>
-        </h1>
-        <article
-          className='slds-card slds-size_1-of-2'
-          style={{ float: 'right' }}
-        >
-          Contact the Council
-        </article>
-      </article>
-      <article className='slds-card'>
-        <h2
-          style={{
-            fontSize: '24px',
-            fontWeight: 'bold',
-            textAlign: 'left',
-            padding: '30px',
-          }}
-        >
-          Upcoming Meetings
-        </h2>
-        <CityInfoMeeting />
-      </article>
-      <article className='slds-card'>
-        <h2
-          style={{
-            fontSize: '24px',
-            fontWeight: 'bold',
-            textAlign: 'left',
-            padding: '30px',
-          }}
-        >
-          Past Meetings
-        </h2>
-        <CityInfoMeeting />
-      </article>
-    </div>
-  );
+// const Jurisdictions = [
+//   'KCMO',
+//   'Wyandotte County',
+//   'Johnson County',
+//   'Overland Park',
+//   'KCMO',
+//   'Jackson',
+// ];
+
+const getTitle = (jurisdiction: string) => {
+  switch (jurisdiction) {
+    case 'KCMO':
+      return 'Kansas City, MO';
+    case 'Wyandotte County':
+      return 'Wyandotte County, KS';
+    case 'Johnson County':
+      return 'Johnson County, KS';
+    case 'Overland Park':
+      return 'Overland Park, KS';
+    case 'Jackson':
+      return 'Jackson County, MO';
+    default:
+      return jurisdiction;
+  }
 };
 
-export default CityInfo;
+export const CityInfo = () => {
+  let { id } = useParams<{ id: string }>();
+  const { startDate, endDate } = generateDateRange();
+
+  const { isLoading, data: meetingData } = useQuery('repoData', () =>
+    fetch(
+      `${API_URL}/api/meetings?start=0&length=100&startDate=${startDate
+        .toISOString()
+        .substring(0, 10)}&endDate=${endDate
+        .toISOString()
+        .substring(0, 10)}&Jurisdiction=${id}`
+    ).then((res) => res.json())
+  );
+
+  if (isLoading) {
+    return <p>Loading Data</p>;
+  }
+
+  const currentDate = new Date();
+  const meetings = meetingData.data as Meeting[];
+
+  const upcomingMeetings = meetings.filter(
+    (meeting) => new Date(meeting.MeetingDate) > currentDate
+  );
+  const previousMeetings = meetings.filter(
+    (meeting) => new Date(meeting.MeetingDate) < currentDate
+  );
+
+  return (
+    <AppContainer>
+      <Spacer top bottom>
+        <article className='slds-card'>
+          <Spacer all>
+            <Typography variant='smallheader' font='primary'>
+              <h1>
+                <span>{getTitle(id)}</span>
+                <Spacer left isHorizontal />
+                <Typography isInline className={styles.JurisdictionLink}>
+                  <Button
+                    className='slds-button slds-button_brand'
+                    variant='outline-brand'
+                    style={{
+                      color: 'rgb(43, 104, 134)',
+                    }}
+                  >
+                    <a
+                      href={getJurisdictionMeetingsPage(id)}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      Visit City Council Website
+                    </a>
+                  </Button>
+                </Typography>
+              </h1>
+            </Typography>
+          </Spacer>
+        </article>
+      </Spacer>
+      <article className='slds-card'>
+        <Spacer all>
+          <Typography variant='body2' font='primary'>
+            <h2>Upcoming Meetings</h2>
+          </Typography>
+          <div
+            style={{
+              display: 'table',
+              width: '100%',
+              borderCollapse: 'collapse',
+            }}
+          >
+            {upcomingMeetings.map((meeting) => (
+              <MeetingRow meeting={meeting} hideJurisdiction>
+                <Button variant='brand'>
+                  <a href={meeting.SourceURL} target='_blank' rel='noreferrer'>
+                    View Agenda
+                  </a>
+                </Button>
+              </MeetingRow>
+            ))}
+          </div>
+        </Spacer>
+      </article>
+      <article className='slds-card'>
+        <Spacer all>
+          <Typography variant='body2' font='primary'>
+            <h2>Past Meetings</h2>
+          </Typography>
+          <div
+            style={{
+              display: 'table',
+              width: '100%',
+              borderCollapse: 'collapse',
+            }}
+          >
+            {previousMeetings.map((meeting) => (
+              <MeetingRow meeting={meeting} hideJurisdiction>
+                <Button variant='brand'>
+                  <a href={meeting.SourceURL} target='_blank' rel='noreferrer'>
+                    View Agenda
+                  </a>
+                </Button>
+              </MeetingRow>
+            ))}
+          </div>
+        </Spacer>
+      </article>
+    </AppContainer>
+  );
+};

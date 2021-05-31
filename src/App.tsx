@@ -13,6 +13,7 @@ import NavBar from './components/NavBar';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { HomePage } from './components/HomePage';
+import { CityInfo } from './components/CityInfo';
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ function App() {
             <Route exact path='/home' component={HomePage} />
             <Route exact path='/about' component={About} />
             <Route exact path='/news' component={TopInfoBar} />
+            <Route exact path='/jurisdiction/:id' component={CityInfo} />
             <Route render={() => <h1>404</h1>} />
           </Switch>
         </div>

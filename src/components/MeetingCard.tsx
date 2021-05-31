@@ -1,32 +1,6 @@
 import React from 'react';
 import { Meeting } from '../models';
-
-const getJurisdictionMeetingsPage = (jurisdiction: string, state: string) => {
-  switch (jurisdiction) {
-    case 'Mission':
-      return 'https://www.missionks.org/agenda.aspx';
-    case 'Jackson':
-      return 'https://jacksonco.legistar.com/Calendar.aspx';
-    case 'Overland Park':
-      return 'https://opkansas.civicweb.net/Portal/MeetingTypeList.aspx';
-    case 'KCMO':
-      return 'http://cityclerk.kcmo.org/liveweb/Meetings/HistoricalMeetings.aspx';
-    default:
-      return ``;
-  }
-};
-
-const getJurisdictionLinkTitle = (jurisdiction: string, state: string) => {
-  switch (jurisdiction) {
-    case 'Jackson':
-    case 'Johnson':
-      return `${jurisdiction} County, ${state}`;
-    case 'KCMO':
-      return 'Kansas City, MO';
-    default:
-      return `${jurisdiction}, ${state}`;
-  }
-};
+import { getJurisdictionLinkTitle, getJurisdictionMeetingsPage } from './utils';
 
 const MeetingCard = ({
   meeting,

@@ -19,6 +19,8 @@ interface Props {
     | 800
     | 900;
   children?: React.ReactElement | React.ReactElement[];
+  isInline?: boolean;
+  className?: string;
 }
 
 export const Typography = ({
@@ -26,6 +28,8 @@ export const Typography = ({
   font = 'secondary',
   fontWeight = 'inherit',
   children,
+  isInline = false,
+  className,
   ...customProps
 }: Props) => {
   let fontSize = 16;
@@ -46,9 +50,20 @@ export const Typography = ({
   }
 
   let fontFamily = font === 'primary' ? 'Merriweather' : 'Arial';
+  const Component = isInline ? 'span' : 'div';
+
   return (
-    <div style={{ fontFamily, fontSize, fontWeight }} {...customProps}>
+    <Component
+      style={{
+        display: isInline ? 'inline-block' : 'block',
+        fontFamily,
+        fontSize,
+        fontWeight,
+      }}
+      className={className}
+      {...customProps}
+    >
       {children}
-    </div>
+    </Component>
   );
 };

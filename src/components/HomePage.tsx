@@ -107,7 +107,7 @@ export const HomePage = () => (
     <section className={styles.Footer}>
       <AppContainer>
         <p>
-          Made by{' '}
+          Made by{'   '}
           <a className={styles.FooterLink} href='https://codeforkc.org/'>
             CodeForKC
           </a>

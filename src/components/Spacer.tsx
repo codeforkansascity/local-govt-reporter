@@ -6,6 +6,7 @@ interface Props {
   left?: Boolean | number;
   right?: Boolean | number;
   bottom?: Boolean | number;
+  isHorizontal?: boolean;
   children?: React.ReactElement | React.ReactElement[];
 }
 
@@ -16,6 +17,7 @@ export const Spacer = ({
   top,
   bottom,
   children,
+  isHorizontal = false,
   ...customProps
 }: Props) => {
   let marginLeft = 0;
@@ -56,7 +58,13 @@ export const Spacer = ({
 
   return (
     <div
-      style={{ marginLeft, marginRight, marginTop, marginBottom }}
+      style={{
+        display: isHorizontal ? 'inline-block' : 'inherit',
+        marginLeft,
+        marginRight,
+        marginTop,
+        marginBottom,
+      }}
       {...customProps}
     >
       {children}

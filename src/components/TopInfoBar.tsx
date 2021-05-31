@@ -93,7 +93,7 @@ const getMeetingDates = (sortedData: MeetingHash) => {
   }, {});
 };
 
-const generateDateRange = () => {
+export const generateDateRange = () => {
   const startDate = new Date();
   const endDate = new Date();
 

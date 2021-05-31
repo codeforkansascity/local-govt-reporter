@@ -3,6 +3,7 @@ import { Meeting } from '../models';
 import { Button, Card } from '@salesforce/design-system-react';
 import styles from './MeetingGroups.module.scss';
 import { MeetingRow } from './MeetingRow';
+import { Link } from 'react-router-dom';
 
 export const MeetingGroups = ({ meetings }: { meetings: Meeting[] }) => {
   const currentDate = new Date();
@@ -27,7 +28,12 @@ export const MeetingGroups = ({ meetings }: { meetings: Meeting[] }) => {
           <div className={styles.meetingGroup}>
             {upcomingMeetings.map((meeting) => (
               <MeetingRow meeting={meeting}>
-                <Button variant='brand'>View All Meetings</Button>
+                <Button variant='brand'>
+                  <Link to={`/jurisdiction/${meeting.Jurisdiction}`}>
+                    {' '}
+                    View All Meetings
+                  </Link>
+                </Button>
               </MeetingRow>
             ))}
           </div>
@@ -44,7 +50,12 @@ export const MeetingGroups = ({ meetings }: { meetings: Meeting[] }) => {
           <div className={styles.meetingGroup}>
             {previousMeetings.map((meeting) => (
               <MeetingRow meeting={meeting}>
-                <Button variant='brand'>View All Meetings</Button>
+                <Button variant='brand'>
+                  <Link to={`/jurisdiction/${meeting.Jurisdiction}`}>
+                    {' '}
+                    View All Meetings
+                  </Link>
+                </Button>
               </MeetingRow>
             ))}
           </div>
