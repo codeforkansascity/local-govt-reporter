@@ -8,6 +8,7 @@ import Typing from './HomePageImages/typing.png';
 import Meeting from './HomePageImages/generic_meeting.png';
 import Protest from '../images/protest.png';
 import MeetingProtest from '../images/meeting_protest.png';
+import classNames from 'classnames';
 
 export const HomePage = () => (
   <>
@@ -71,7 +72,12 @@ export const HomePage = () => (
             src={Protest}
             alt='Protest Outside'
           />
-          <div className={styles.BaseSectionText}>
+          <div
+            className={classNames(
+              styles.BaseSectionText,
+              styles.BaseSectionTextCentered
+            )}
+          >
             <p className={styles.FontTwo} style={{ fontSize: '2em' }}>
               For the people - it's your right
             </p>
@@ -80,7 +86,12 @@ export const HomePage = () => (
       </AppContainer>
       <AppContainer>
         <div className={styles.BaseSection}>
-          <div className={styles.BaseSectionText}>
+          <div
+            className={classNames(
+              styles.BaseSectionText,
+              styles.BaseSectionTextCentered
+            )}
+          >
             <p className={styles.FontTwo} style={{ fontSize: '2em' }}>
               Decide what matters to you and how you act on it
             </p>

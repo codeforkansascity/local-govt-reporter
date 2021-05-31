@@ -56,8 +56,12 @@
 }
 
 .BaseSectionText {
-  text-align: center;
   flex-grow: 1;
+  padding: 10px;
+}
+
+.BaseSectionTextCentered {
+  text-align: center;
 }
 
 .Footer {
